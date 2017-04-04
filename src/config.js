@@ -51,7 +51,7 @@ const learningPathDomain = () => {
 
 module.exports = Object.assign({
   host: process.env.NDLA_FRONTENTD_HOST || 'localhost',
-  port: process.env.NDLA_FRONTENTD_PORT || '3000',
+  port: process.env.port || '3000',
   redirectPort: process.env.NDLA_REDIRECT_PORT || '3001',
   googleTagMangerId: process.env.GOOGLE_TAG_MANGER_ID || undefined,
   disableSSR: process.env.DISABLE_SSR || false,

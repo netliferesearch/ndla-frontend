@@ -1,6 +1,6 @@
 FROM node:6.10.0-alpine
 
-ENV HOME=/home/app
+ENV HOME=/
 ENV APP_PATH=$HOME/ndla-frontend
 
 #Install yarn

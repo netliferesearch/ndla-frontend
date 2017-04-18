@@ -20,7 +20,7 @@ export const getToken = () => fetch(url, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-    Authorization: `Basic ${b64EncodeUnicode(`${process.env.NDLA_FRONTEND_CLIENT_ID}:${process.env.NDLA_FRONTEND_CLIENT_SECRET}`)}`,
+    Authorization: `Basic ${b64EncodeUnicode(`${config.ndlaFrontendClientId}:${config.ndlaFrontendClientSecret}`)}`,
   },
   body: 'grant_type=client_credentials',
 }).then(res => res.json());

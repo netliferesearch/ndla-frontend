@@ -9,7 +9,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { Hero } from 'ndla-ui';
+import { Hero, OneColumn } from 'ndla-ui';
 import * as actions from './articleActions';
 import * as topicActions from '../TopicPage/topicActions';
 import { getTopicPath } from '../TopicPage/topicSelectors';
@@ -61,13 +61,15 @@ class ArticlePage extends Component {
     const metaDescription = article.metaDescription ? { name: 'description', content: article.metaDescription } : {};
     return (
       <div>
-        <Hero white><span /></Hero>
+        <Hero red><span /></Hero>
         <Helmet
           title={`NDLA | ${article.title}`}
           meta={[metaDescription]}
           script={scripts}
         />
-        <Article article={article} subject={subject} topicPath={topicPath} locale={locale} />
+        <OneColumn cssModifier="narrow">
+          <Article article={article} subject={subject} topicPath={topicPath} locale={locale} />
+        </OneColumn>
       </div>
     );
   }

@@ -10,6 +10,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Hero, OneColumn, TopicArticle, TopicBreadcrumb } from 'ndla-ui';
+import Helmet from 'react-helmet';
 
 import * as actions from './topicActions';
 import * as subjectActions from '../SubjectPage/subjectActions';
@@ -41,6 +42,7 @@ class TopicPage extends Component {
       return null;
     }
 
+    const metaDescription = article.metaDescription ? { name: 'description', content: article.metaDescription } : {};
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Hero>
@@ -63,6 +65,10 @@ class TopicPage extends Component {
             </div>
           </OneColumn>
         </Hero>
+        <Helmet
+          title={`NDLA | ${article.title}`}
+          meta={[metaDescription]}
+        />
         <OneColumn cssModifier="narrow">
           <section className="c-article-content">
             { article ? <TopicArticle article={article} /> : null }

@@ -74,10 +74,10 @@ const phrases = {
     tabs: {
       all: 'Alle',
       learningpaths: 'Læringsstier',
-      subjectMaterial: 'Fagstoff',
+      subjectMaterial: 'Lærestoff',
     },
     subjectMaterial: {
-      title: 'Fagstoff',
+      title: 'Lærestoff',
       description: 'Foretrekker du å se en video, eller lese en tekst? Velg selv.',
     },
     learningpaths: {
@@ -85,12 +85,12 @@ const phrases = {
       description: 'Gå steg for steg gjennom emnet.',
     },
     tasks: {
-      title: 'Oppgaver',
+      title: 'Oppgaver og aktiviteter',
       description: 'Lær bedre gjennom å løse konkrete oppgaver.',
     },
     links: {
-      viewAllLearningPaths: 'Se alle læringsstier \u2192',
-      viewAllSubjectMaterials: 'Se alt fagstoff \u2192',
+      viewAllLearningPaths: 'Flere læringsstier \u2192',
+      viewAllSubjectMaterials: 'Mer lærestoff \u2192',
     },
   },
   searchPage: {

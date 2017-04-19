@@ -10,7 +10,6 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Hero, OneColumn, TopicArticle, TopicBreadcrumb } from 'ndla-ui';
-import Helmet from 'react-helmet';
 
 import * as actions from './topicActions';
 import * as subjectActions from '../SubjectPage/subjectActions';
@@ -42,16 +41,8 @@ class TopicPage extends Component {
       return null;
     }
 
-    const metaDescription = article ? { name: 'description', content: article.metaDescription } : {};
-    const title = article ? article.title : topic.name;
-    const scripts = article ? article.requiredLibraries.map(lib => ({ src: lib.url, type: lib.mediaType })) : [];
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <Helmet
-          title={`NDLA | ${title}`}
-          meta={[metaDescription]}
-          script={scripts}
-        />
         <Hero>
           <OneColumn cssModifier="narrow">
             <div className="c-hero__content">
@@ -72,14 +63,12 @@ class TopicPage extends Component {
             </div>
           </OneColumn>
         </Hero>
-        <div className="u-bg-lightblue">
-          <OneColumn cssModifier="narrow">
-            <div>
-              { article ? <TopicArticle article={article} openTitle={`${t('topicPage.openArticleTopic')}`} closeTitle={t('topicPage.closeArticleTopic')} notitle /> : null }
-            </div>
-          </OneColumn>
-        </div>
-        <TopicTabs subjectId={subjectId} topic={topic} topicPath={topicPath} />
+        <OneColumn cssModifier="narrow">
+          <section className="c-article-content">
+            { article ? <TopicArticle article={article} /> : null }
+            <TopicTabs subjectId={subjectId} topic={topic} topicPath={topicPath} />
+          </section>
+        </OneColumn>
       </div>
     );
   }

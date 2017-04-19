@@ -44,7 +44,7 @@ class Resources extends Component {
         description: t('resources.learningpaths.description'),
         viewAllLinkTitle: t('resources.links.viewAllLearningPaths'),
         resources: learningPathResources.slice(0, 2),
-        color: 'blue',
+        color: 'yellow',
       },
       {
         title: t('resources.tasks.title'),

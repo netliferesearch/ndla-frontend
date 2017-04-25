@@ -67,7 +67,7 @@ class Resources extends Component {
       );
     } else if (selectedResourceTabIndex === 2) {
       return (
-        <div className="c-topic-resource-subset c-topic-resource-subset--blue">
+        <div className="c-topic-resource-subset c-topic-resource-subset--yellow">
           <ResourceList resourceToLinkProps={resourceToLinkProps} resources={learningPathResources} />
           <Link to={toResourceTab(-1)}>Tilbake</Link>
         </div>

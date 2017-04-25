@@ -78,15 +78,15 @@ const phrases = {
     },
     subjectMaterial: {
       title: 'Lærestoff',
-      description: 'Foretrekker du å se en video, eller lese en tekst? Velg selv.',
+      description: 'Relaterte emneartikler',
     },
     learningpaths: {
       title: 'Læringsstier',
-      description: 'Gå steg for steg gjennom emnet.',
+      description: 'Tilknyttet dette emnet',
     },
     tasks: {
       title: 'Oppgaver og aktiviteter',
-      description: 'Lær bedre gjennom å løse konkrete oppgaver.',
+      description: 'Relatert til emnet',
     },
     links: {
       viewAllLearningPaths: 'Flere læringsstier \u2192',

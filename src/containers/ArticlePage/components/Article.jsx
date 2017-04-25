@@ -59,13 +59,13 @@ class Article extends Component {
 
     return (
       <section className="c-article-content">
-        <OneColumn cssModifier="narrow">
-          <section>
-            { subject ? <TopicBreadcrumb toSubjects={() => '/'} subjectsTitle="Fag" subject={subject} topicPath={topicPath} toTopic={toTopic}>Du er her:</TopicBreadcrumb> : null }
-            {this.renderToggleLicenseBox()}
-            <h1>{article.title}</h1>
+        <OneColumn cssModifier="wide">
+          { subject ? <TopicBreadcrumb toSubjects={() => '/'} subjectsTitle="Fag" subject={subject} topicPath={topicPath} toTopic={toTopic}>Du er her:</TopicBreadcrumb> : null }
+          {this.renderToggleLicenseBox()}
+          <OneColumn cssModifier="narrow">
+            <h1 className="c-article__title">{article.title}</h1>
             <UIArticle.Introduction introduction={article.introduction} />
-          </section>
+          </OneColumn>
         </OneColumn>
         <OneColumn cssModifier="narrow">
           <div dangerouslySetInnerHTML={{ __html: article.content }} />

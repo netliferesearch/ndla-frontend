@@ -69,12 +69,10 @@ class TopicPage extends Component {
           title={`NDLA | ${article.title}`}
           meta={[metaDescription]}
         />
-        <OneColumn cssModifier="narrow">
-          <section className="c-article-content">
-            { article ? <TopicArticle article={article} /> : null }
-            <TopicTabs subjectId={subjectId} topic={topic} topicPath={topicPath} />
-          </section>
-        </OneColumn>
+        <section className="c-article-content">
+          { article ? <TopicArticle article={article} /> : null }
+          <TopicTabs subjectId={subjectId} topic={topic} topicPath={topicPath} />
+        </section>
       </div>
     );
   }

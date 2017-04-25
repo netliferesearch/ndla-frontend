@@ -8,13 +8,12 @@
 
 import React, { PropTypes, Component } from 'react';
 
-import { Article as UIArticle, LicenseByline, TopicBreadcrumb, OneColumn } from 'ndla-ui';
+import { Article as UIArticle, LicenseByline, OneColumn } from 'ndla-ui';
 import {
   initArticleScripts,
   removeEventListenerForResize,
   removeAsideClickListener } from 'ndla-article-scripts';
 import getLicenseByAbbreviation from 'ndla-licenses';
-import { toTopic } from '../../../routes';
 import { injectT } from '../../../i18n';
 import ToggleLicenseBox from './ToggleLicenseBox';
 import LicenseBox from '../../../components/license/LicenseBox';
@@ -55,12 +54,11 @@ class Article extends Component {
   }
 
   render() {
-    const { article, subject, topicPath } = this.props;
+    const { article } = this.props;
 
     return (
       <section className="c-article-content">
         <OneColumn cssModifier="wide">
-          { subject ? <TopicBreadcrumb toSubjects={() => '/'} subjectsTitle="Fag" subject={subject} topicPath={topicPath} toTopic={toTopic}>Du er her:</TopicBreadcrumb> : null }
           {this.renderToggleLicenseBox()}
           <OneColumn cssModifier="narrow">
             <h1 className="c-article__title">{article.title}</h1>
@@ -68,7 +66,7 @@ class Article extends Component {
           </OneColumn>
         </OneColumn>
         <OneColumn cssModifier="narrow">
-          <div dangerouslySetInnerHTML={{ __html: article.content }} />
+          <div className="c-article--narrow" dangerouslySetInnerHTML={{ __html: article.content }} />
         </OneColumn>
         <OneColumn cssModifier="narrow">
           <section>

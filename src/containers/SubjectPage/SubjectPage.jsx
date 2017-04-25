@@ -68,14 +68,16 @@ class SubjectPage extends Component {
         <OneColumn cssModifier="narrow">
           <section className="c-article-content">
             <h1 className="c-article__title">{subject.name}</h1>
-            <Tabs
-              tabs={[
-                {
-                  title: t('subjectPage.tabs.topics'),
-                  content: <TopicIntroductionList toTopic={toTopic(subject.id)} topics={topics} />,
-                },
-              ]}
-            />
+            <div className="c-resources">
+              <Tabs
+                tabs={[
+                  {
+                    title: t('subjectPage.tabs.topics'),
+                    content: <TopicIntroductionList toTopic={toTopic(subject.id)} topics={topics} />,
+                  },
+                ]}
+              />
+            </div>
           </section>
         </OneColumn>
       </div>

@@ -57,9 +57,7 @@ class TopicPage extends Component {
                     subject={subject}
                     topicPath={topicPath.slice(0, -1)}
                     toTopic={toTopic}
-                  >
-                    { t('breadcrumb.label') }
-                  </TopicBreadcrumb>
+                  />
                 : null }
               </section>
             </div>

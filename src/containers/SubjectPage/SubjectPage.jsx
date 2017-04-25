@@ -55,7 +55,6 @@ class SubjectPage extends Component {
             <div className="c-hero__content">
               <section>
                 <div className="c-breadcrumb">
-                  {t('breadcrumb.label')}
                   <ol className="c-breadcrumb__list">
                     <li className="c-breadcrumb__item">
                       <Link to="/">{t('breadcrumb.subjectsLinkText')}</Link> &#x203A;

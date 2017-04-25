@@ -42,7 +42,8 @@ class TopicPage extends Component {
       return null;
     }
 
-    const metaDescription = article.metaDescription ? { name: 'description', content: article.metaDescription } : {};
+    const metaDescription = article ? { name: 'description', content: article.metaDescription } : {};
+    const title = article ? article.title : topic.name;
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Hero>
@@ -66,7 +67,7 @@ class TopicPage extends Component {
           </OneColumn>
         </Hero>
         <Helmet
-          title={`NDLA | ${article.title}`}
+          title={`NDLA | ${title}`}
           meta={[metaDescription]}
         />
         <OneColumn cssModifier="narrow">

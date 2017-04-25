@@ -9,7 +9,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { OneColumn, Hero, TopicIntroductionList } from 'ndla-ui';
+import { OneColumn, Hero } from 'ndla-ui';
 import Tabs from 'ndla-tabs';
 import { Link } from 'react-router';
 import defined from 'defined';
@@ -20,6 +20,9 @@ import { getSubjectById } from './subjectSelectors';
 import { getTopicsBySubjectIdWithIntroduction, getTopic } from '../TopicPage/topicSelectors';
 import { SubjectShape, TopicShape } from '../../shapes';
 import { toTopicPartial } from '../../routes';
+
+// Custom import - remove on production
+import TopicIntroductionList from '../../../lib/topic/TopicIntroductionList';
 
 const toTopic = subjectId => toTopicPartial(subjectId);
 

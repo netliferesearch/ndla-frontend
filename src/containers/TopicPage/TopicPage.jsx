@@ -61,7 +61,6 @@ class TopicPage extends Component {
                     { t('breadcrumb.label') }
                   </TopicBreadcrumb>
                 : null }
-                <h1 className="c-hero__title" style={{ clear: 'both' }}>{topic.name}</h1>
               </section>
             </div>
           </OneColumn>

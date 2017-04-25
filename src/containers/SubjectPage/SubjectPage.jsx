@@ -68,7 +68,7 @@ class SubjectPage extends Component {
         </Hero>
         <OneColumn cssModifier="narrow">
           <section className="c-article-content">
-            <h1>{subject.name}</h1>
+            <h1 className="c-article__title">{subject.name}</h1>
             <Tabs
               tabs={[
                 {

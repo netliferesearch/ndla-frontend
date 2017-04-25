@@ -26,7 +26,7 @@ export const htmlTemplate = (lang, body, introduction, title) =>
       <div class="o-wrapper u-1/1">
         <article class="c-article">
           <h1>${title}</h1>
-          <section class="article_introduction">
+          <section class="c-article__introduction">
             <p class="article_introduction">${introduction}</p>
           </section>
           ${body}

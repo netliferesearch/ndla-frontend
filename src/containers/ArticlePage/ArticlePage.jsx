@@ -65,7 +65,7 @@ class ArticlePage extends Component {
         <Hero red>
           <OneColumn cssModifier="narrow">
             <div className="c-hero__content">
-              { subject ? <TopicBreadcrumb toSubjects={() => '/'} subjectsTitle="" subject={subject} topicPath={topicPath} toTopic={toTopic}>Du er her:</TopicBreadcrumb> : null }
+              { subject ? <TopicBreadcrumb toSubjects={() => '/'} subjectsTitle="" subject={subject} topicPath={topicPath} toTopic={toTopic} /> : null }
             </div>
           </OneColumn>
         </Hero>

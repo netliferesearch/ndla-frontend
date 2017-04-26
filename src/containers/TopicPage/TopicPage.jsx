@@ -9,7 +9,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Hero, OneColumn, TopicArticle, TopicBreadcrumb } from 'ndla-ui';
+import { Hero, OneColumn, TopicArticle, TopicBreadcrumb } from '../../../lib';
 import Helmet from 'react-helmet';
 
 import * as actions from './topicActions';
@@ -69,8 +69,8 @@ class TopicPage extends Component {
         <OneColumn cssModifier="narrow">
           <section className="c-article-content">
             { article ? <TopicArticle article={article} openTitle={`${t('topicPage.openArticleTopic')}`} closeTitle={t('topicPage.closeArticleTopic')}  /> : null }
-            <TopicTabs subjectId={subjectId} topic={topic} topicPath={topicPath} />
           </section>
+          <TopicResources subjectId={subjectId} topic={topic} topicPath={topicPath} />
         </OneColumn>
       </div>
     );

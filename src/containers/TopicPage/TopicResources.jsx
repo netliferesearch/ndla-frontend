@@ -8,6 +8,7 @@
 
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import BEMHelper from 'react-bem-helper';
 import { compose } from 'redux';
 import { TopicIntroductionList, ResourceWrapper } from '../../../lib';
 import { getSubtopicsWithIntroduction } from './topicSelectors';
@@ -23,6 +24,10 @@ const toTopic = (subjectId, topicPath) => {
   return toTopicPartial(subjectId, ...topicIds);
 };
 
+const classes = new BEMHelper({
+  name: 'resources',
+  prefix: 'c-',
+});
 
 class TopicResources extends Component {
   componentWillMount() {
@@ -41,7 +46,7 @@ class TopicResources extends Component {
     const { subtopics, topic: { id: topicId }, subjectId, topicPath, t } = this.props;
     return (
       <ResourceWrapper>
-        <h1>{t('topicPage.topics')}</h1>
+        <h1 {...classes('title')}>{t('topicPage.topics')}</h1>
         <TopicIntroductionList toTopic={toTopic(subjectId, topicPath)} topics={subtopics} />
         <Resources topicId={topicId} />
       </ResourceWrapper>

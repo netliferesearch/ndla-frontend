@@ -8,6 +8,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
+import BEMHelper from 'react-bem-helper';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { ResourceList } from '../../../lib';
@@ -15,6 +16,10 @@ import { ResourceTypeShape } from '../../shapes';
 import { getResourceTypesByTopicId } from './resourceSelectors';
 import { resourceToLinkProps as resourceToLinkPropsHelper } from './resourceHelpers';
 
+const classes = new BEMHelper({
+  name: 'resource-group',
+  prefix: 'c-',
+});
 
 class Resources extends Component {
   componentWillMount() {
@@ -32,9 +37,9 @@ class Resources extends Component {
     return (
       <div>
         {topicResourcesByType.map(type => (
-          <div key={type.id}>
-            <h1>{type.name}</h1>
-            <ResourceList resourceToLinkProps={resourceToLinkProps} resources={type.resources.map(resource => ({ ...resource, icon: 'Pencil' }))} />
+          <div key={type.id} {...classes('', type.id)}>
+            <h1 {...classes('title')}>{type.name}</h1>
+            <ResourceList resourceToLinkProps={resourceToLinkProps} resources={type.resources.map(resource => ({ ...resource, icon: type.name }))} />
           </div>),
         )
         }

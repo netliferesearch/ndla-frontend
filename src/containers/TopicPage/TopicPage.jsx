@@ -10,7 +10,6 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Hero, OneColumn, TopicArticle, TopicBreadcrumb } from '../../../lib';
-import Helmet from 'react-helmet';
 
 import * as actions from './topicActions';
 import * as subjectActions from '../SubjectPage/subjectActions';
@@ -45,8 +44,6 @@ class TopicPage extends Component {
       return null;
     }
 
-    const metaDescription = article ? { name: 'description', content: article.metaDescription } : {};
-    const title = article ? article.title : topic.name;
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Hero>
@@ -68,9 +65,9 @@ class TopicPage extends Component {
         </Hero>
         <OneColumn cssModifier="narrow">
           <section className="c-article-content">
-            { article ? <TopicArticle article={article} openTitle={`${t('topicPage.openArticleTopic')}`} closeTitle={t('topicPage.closeArticleTopic')}  /> : null }
+            { article ? <TopicArticle article={article} openTitle={`${t('topicPage.openArticleTopic')}`} closeTitle={t('topicPage.closeArticleTopic')} /> : null }
+            <TopicResources subjectId={subjectId} topic={topic} topicPath={topicPath} />
           </section>
-          <TopicResources subjectId={subjectId} topic={topic} topicPath={topicPath} />
         </OneColumn>
       </div>
     );

@@ -9,7 +9,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import Tabs from 'ndla-tabs';
 import { TopicIntroductionList, ResourceWrapper } from '../../../lib';
 import { getSubtopicsWithIntroduction } from './topicSelectors';
 import * as resourceActions from '../Resources/resourceActions';
@@ -18,9 +17,6 @@ import { TopicShape } from '../../shapes';
 import Resources from '../Resources/Resources';
 import { getResourcesByTopicId } from '../Resources/resourceSelectors';
 import { toTopicPartial } from '../../routes';
-
-// Custom import - remove on production
-//import TopicIntroductionList from '../../../lib/topic/TopicIntroductionList';
 
 const toTopic = (subjectId, topicPath) => {
   const topicIds = topicPath.map(topic => topic.id);

@@ -37,7 +37,7 @@ class Resources extends Component {
     return (
       <div>
         {topicResourcesByType.map(type => (
-          <div key={type.id} {...classes('', type.id)}>
+          <div key={type.id} {...classes('', type.name.replace(/æ/g, ''))}>
             <h1 {...classes('title')}>{type.name}</h1>
             <ResourceList resourceToLinkProps={resourceToLinkProps} resources={type.resources.map(resource => ({ ...resource, icon: type.name }))} />
           </div>),

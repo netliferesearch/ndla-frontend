@@ -16,7 +16,7 @@ import * as actions from './topicActions';
 import * as subjectActions from '../SubjectPage/subjectActions';
 import { getTopicArticle, getTopic, getTopicPath } from './topicSelectors';
 import { getSubjectById } from '../SubjectPage/subjectSelectors';
-import TopicTabs from './TopicTabs';
+import TopicResources from './TopicResources';
 import { SubjectShape, ArticleShape, TopicShape } from '../../shapes';
 import { injectT } from '../../i18n';
 import { toTopic } from '../../routes';
@@ -66,13 +66,9 @@ class TopicPage extends Component {
             </div>
           </OneColumn>
         </Hero>
-        <Helmet
-          title={`NDLA | ${title}`}
-          meta={[metaDescription]}
-        />
         <OneColumn cssModifier="narrow">
           <section className="c-article-content">
-            { article ? <TopicArticle article={article} /> : null }
+            { article ? <TopicArticle article={article} openTitle={`${t('topicPage.openArticleTopic')}`} closeTitle={t('topicPage.closeArticleTopic')}  /> : null }
             <TopicTabs subjectId={subjectId} topic={topic} topicPath={topicPath} />
           </section>
         </OneColumn>

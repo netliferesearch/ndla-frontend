@@ -44,9 +44,9 @@ class Article extends Component {
         licenseBox={<LicenseBox article={article} locale={locale} license={license} />}
       >
         { showByline ?
-          <LicenseByline license={license}>
-            <span className="article_meta">{authorsList}. Publisert: {article.created}</span>.
-          </LicenseByline>
+          <div className="c-article-meta">
+            <span className="c-article__metatext">{authorsList}. Publisert: {article.created}</span>.
+          </div>
           : null
         }
       </ToggleLicenseBox>
@@ -61,13 +61,13 @@ class Article extends Component {
 
         <h1 className="c-article__title">{article.title}</h1>
         <UIArticle.Introduction introduction={article.introduction} />
+        { article.footNotes ? <UIArticle.FootNotes footNotes={article.footNotes} /> : null }
         <OneColumn cssModifier="narrow">
-          {this.renderToggleLicenseBox()}
+          {this.renderToggleLicenseBox(true)}
         </OneColumn>
         <div className="c-article--narrow" dangerouslySetInnerHTML={{ __html: article.content }} />
         <section>
-          { article.footNotes ? <UIArticle.FootNotes footNotes={article.footNotes} /> : null }
-          {this.renderToggleLicenseBox(true)}
+          {this.renderToggleLicenseBox()}
           <a className="article-old-ndla-link" rel="noopener noreferrer" target="_blank" href={article.oldNdlaUrl}>Gå til orginal artikkel</a>
         </section>
       </section>

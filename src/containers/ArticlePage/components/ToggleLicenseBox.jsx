@@ -8,7 +8,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import { Button } from 'ndla-ui';
+import { Button } from '../../../../lib';
 
 class ToggleLicenseBox extends Component {
   constructor() {

@@ -10,7 +10,7 @@ import React, { Component, PropTypes } from 'react';
 import { withRouter } from 'react-router';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { ResourceList } from 'ndla-ui';
+import { ResourceList } from '../../../lib';
 import { ResourceTypeShape } from '../../shapes';
 import { getResourceTypesByTopicId } from './resourceSelectors';
 import { resourceToLinkProps as resourceToLinkPropsHelper } from './resourceHelpers';

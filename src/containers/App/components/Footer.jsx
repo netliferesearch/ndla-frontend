@@ -7,7 +7,7 @@
  */
 
 import React, { PropTypes } from 'react';
-import { Footer } from 'ndla-ui';
+import { Footer } from '../../../../lib';
 import SelectLocale from '../../Locale/SelectLocale';
 
 const FooterWrapper = ({ t }) => (

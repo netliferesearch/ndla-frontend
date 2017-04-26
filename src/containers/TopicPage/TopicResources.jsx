@@ -10,7 +10,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import Tabs from 'ndla-tabs';
-import { TopicIntroductionList, ResourceWrapper } from 'ndla-ui';
+import { TopicIntroductionList, ResourceWrapper } from '../../../lib';
 import { getSubtopicsWithIntroduction } from './topicSelectors';
 import * as resourceActions from '../Resources/resourceActions';
 import { injectT } from '../../i18n';

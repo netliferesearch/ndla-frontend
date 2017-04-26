@@ -8,7 +8,7 @@
 
 import React, { PropTypes } from 'react';
 import { compose } from 'redux';
-import { OneColumn } from 'ndla-ui';
+import { OneColumn } from '../../../lib';
 import { injectT } from '../../i18n';
 import { SubjectShape } from '../../shapes';
 import { injectSubjects } from '../SubjectPage/subjectHOCs';

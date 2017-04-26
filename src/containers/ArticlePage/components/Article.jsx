@@ -8,12 +8,12 @@
 
 import React, { PropTypes, Component } from 'react';
 
-import { Article as UIArticle, LicenseByline, OneColumn } from 'ndla-ui';
 import {
   initArticleScripts,
   removeEventListenerForResize,
   removeAsideClickListener } from 'ndla-article-scripts';
 import getLicenseByAbbreviation from 'ndla-licenses';
+import { Article as UIArticle, LicenseByline, OneColumn } from '../../../../lib';
 import { injectT } from '../../../i18n';
 import ToggleLicenseBox from './ToggleLicenseBox';
 import LicenseBox from '../../../components/license/LicenseBox';

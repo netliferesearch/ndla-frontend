@@ -7,7 +7,7 @@
  */
 
 import React, { Component, PropTypes } from 'react';
-import { Button } from 'ndla-ui';
+import { Button } from '../../../../lib';
 import { injectT } from '../../../i18n';
 
 class SearchForm extends Component {

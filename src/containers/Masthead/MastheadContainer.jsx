@@ -7,9 +7,9 @@
  */
 
 import React, { PropTypes } from 'react';
-import { Masthead, MastheadItem, Logo, ClickToggle, TopicMenu } from 'ndla-ui';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
+import { Masthead, MastheadItem, Logo, ClickToggle, TopicMenu } from '../../../lib';
 import { toTopic } from '../../routes';
 import { getSubjectById } from '../SubjectPage/subjectSelectors';
 import { getSubjectMenu } from '../TopicPage/topicSelectors';

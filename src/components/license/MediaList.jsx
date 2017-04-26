@@ -8,7 +8,7 @@
 
 import React, { PropTypes } from 'react';
 import { uuid } from 'ndla-util';
-import { ClickableLicenseByline } from 'ndla-ui';
+import { ClickableLicenseByline } from '../../../lib';
 import getLicenseByAbbreviation from 'ndla-licenses';
 import BEMHelper from 'react-bem-helper';
 

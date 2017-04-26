@@ -8,7 +8,7 @@
 
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import { Pager, OneColumn } from 'ndla-ui';
+import { Pager, OneColumn } from '../../../lib';
 
 import * as actions from './searchActions';
 import { ArticleResultShape } from '../../shapes';

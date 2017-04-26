@@ -58,23 +58,18 @@ class Article extends Component {
 
     return (
       <section className="c-article-content">
-        <OneColumn cssModifier="wide">
+
+        <h1 className="c-article__title">{article.title}</h1>
+        <UIArticle.Introduction introduction={article.introduction} />
+        <OneColumn cssModifier="narrow">
           {this.renderToggleLicenseBox()}
-          <OneColumn cssModifier="narrow">
-            <h1 className="c-article__title">{article.title}</h1>
-            <UIArticle.Introduction introduction={article.introduction} />
-          </OneColumn>
         </OneColumn>
-        <OneColumn cssModifier="narrow">
-          <div className="c-article--narrow" dangerouslySetInnerHTML={{ __html: article.content }} />
-        </OneColumn>
-        <OneColumn cssModifier="narrow">
-          <section>
-            { article.footNotes ? <UIArticle.FootNotes footNotes={article.footNotes} /> : null }
-            {this.renderToggleLicenseBox(true)}
-            <a className="article-old-ndla-link" rel="noopener noreferrer" target="_blank" href={article.oldNdlaUrl}>Gå til orginal artikkel</a>
-          </section>
-        </OneColumn>
+        <div className="c-article--narrow" dangerouslySetInnerHTML={{ __html: article.content }} />
+        <section>
+          { article.footNotes ? <UIArticle.FootNotes footNotes={article.footNotes} /> : null }
+          {this.renderToggleLicenseBox(true)}
+          <a className="article-old-ndla-link" rel="noopener noreferrer" target="_blank" href={article.oldNdlaUrl}>Gå til orginal artikkel</a>
+        </section>
       </section>
     );
   }

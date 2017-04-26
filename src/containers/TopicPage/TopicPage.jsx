@@ -20,8 +20,6 @@ import { SubjectShape, ArticleShape, TopicShape } from '../../shapes';
 import { injectT } from '../../i18n';
 import { toTopic } from '../../routes';
 
-// Custom import - remove on production
-// import TopicArticle from '../../../lib/topic/TopicArticle';
 
 class TopicPage extends Component {
   componentWillMount() {

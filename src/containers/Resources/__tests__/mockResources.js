@@ -94,7 +94,7 @@ export const resourceTypes =
   [
     {
       id: 'urn:resource-type:1',
-      name: 'Fagstoff',
+      name: 'Lærestoff',
       subtypes: [
         {
           id: 'urn:resource-type:3',
@@ -108,7 +108,7 @@ export const resourceTypes =
     },
     {
       id: 'urn:resource-type:2',
-      name: 'Læringssti',
+      name: 'Læringsstier',
     },
     {
       id: 'urn:resource-type:5',
@@ -120,11 +120,10 @@ export const resourceTypes =
     },
     {
       id: 'urn:resource-type:7',
-      name: 'Oppgave',
+      name: 'Oppgaver og aktiviteter',
     },
     {
       id: 'urn:resource-type:8',
       name: 'Simulering',
     },
   ];
-

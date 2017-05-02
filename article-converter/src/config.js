@@ -18,7 +18,7 @@ const environment = {
 
 const domain = () => {
   if (!process.env.NDLA_ENVIRONMENT) {
-    return 'http://ndla-frontend.herokuapp.com/'; // Defaults to test if undefined
+    return 'https://test.api.ndla.no'; // Defaults to test if undefined
   }
 
   switch (process.env.NDLA_ENVIRONMENT) {
@@ -27,11 +27,20 @@ const domain = () => {
     case 'prod':
       return 'https://api.ndla.no';
     default:
-      return 'http://ndla-frontend.herokuapp.com/';
+      return `https://${process.env.NDLA_ENVIRONMENT}.api.ndla.no`;
   }
 };
 
-const ndlaFrontendDomain = 'http://ndla-frontend.herokuapp.com/';
+const ndlaFrontendDomain = () => {
+  switch (process.env.NDLA_ENVIRONMENT) {
+    case 'local':
+      return 'http://localhost';
+    case 'prod':
+      return 'https://api.ndla.no';
+    default:
+      return `https://ndla-frontend.${process.env.NDLA_ENVIRONMENT}.api.ndla.no`;
+  }
+};
 
 module.exports = Object.assign({
   host: process.env.ARTICLE_CONVERTER_HOST || 'localhost',

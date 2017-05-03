@@ -19,7 +19,6 @@ import Footer from './components/Footer';
 import { getLocale } from '../Locale/localeSelectors';
 import { getMessages } from '../Messages/messagesSelectors';
 import { getSticky } from '../Masthead/mastheadSelectors'
-import '../Masthead/mastheadStyles.css';
 import Alerts from '../Messages/Alerts';
 import { injectT } from '../../i18n';
 

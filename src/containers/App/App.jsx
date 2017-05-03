@@ -12,7 +12,6 @@ import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import cx from 'classnames'
 import { PageContainer } from '../../../lib';
-import 'react-sticky-header/styles.css';
 import ReactStickyHeader from 'react-sticky-header';
 import { MessageShape } from '../../shapes';
 import Masthead from '../Masthead';
@@ -20,6 +19,7 @@ import Footer from './components/Footer';
 import { getLocale } from '../Locale/localeSelectors';
 import { getMessages } from '../Messages/messagesSelectors';
 import { getSticky } from '../Masthead/mastheadSelectors'
+import '../Masthead/mastheadStyles.css';
 import Alerts from '../Messages/Alerts';
 import { injectT } from '../../i18n';
 

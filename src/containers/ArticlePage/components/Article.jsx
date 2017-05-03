@@ -47,11 +47,11 @@ class Article extends Component {
     initArticleScripts();
     //console.log('test')
     document.addEventListener("selectionchange", event => {
+      /*
       const selection = encodeURI(window.getSelection().toString().split(' ')[0])
       fetch(`https://snl.no/api/v1/search?query=${selection}&limit=5&offset=0`).then(data => data.json())
         .then(data => this.setState({wikiResponse: data}))
-      // selection.baseNode.textContent.replace('/yrker/i', '<span class="test">yrker</span>')
-      /*
+
       var index = innerHTML.indexOf('yrker');
       console.dir(selection)
       if ( index >= 0 )

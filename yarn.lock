@@ -4950,7 +4950,7 @@ querystring@^0.2.0, querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
 
-raf@^3.1.0:
+raf@^3.1.0, raf@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/raf/-/raf-3.3.0.tgz#93845eeffc773f8129039f677f80a36044eee2c3"
   dependencies:
@@ -5099,6 +5099,19 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^0.2.2"
 
+react-sticky:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-sticky/-/react-sticky-6.0.0.tgz#b5919c7e7005dade54ab8d18900fb28ddfb7b93e"
+  dependencies:
+    prop-types "^15.5.8"
+    raf "^3.3.0"
+
+react-sticky-header:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/react-sticky-header/-/react-sticky-header-0.1.6.tgz#a0f0fe88b05be366ace1704e1648380af5764bca"
+  dependencies:
+    react "^15.5.4"
+
 react-tabs@^0.8.0:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/react-tabs/-/react-tabs-0.8.2.tgz#7928e822361b61eb7f53164daf86ad7ee98ef539"
@@ -5106,7 +5119,7 @@ react-tabs@^0.8.0:
     classnames "^2.2.0"
     js-stylesheet "^0.0.1"
 
-react@^15.4.2:
+react@^15.4.2, react@^15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react/-/react-15.5.4.tgz#fa83eb01506ab237cdc1c8c3b1cea8de012bf047"
   dependencies:

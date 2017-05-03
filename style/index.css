@@ -16,6 +16,7 @@
 @import 'search.css';
 @import 'table.css';
 @import 'alert.css';
+@import 'sticky.css';
 
 .article-old-ndla-link:any-link {
   &:any-link {

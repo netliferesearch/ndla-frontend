@@ -7,11 +7,14 @@
  */
 
 import React from 'react';
+import { OneColumn } from '../../../lib';
+import { Link } from 'react-router'
 
 export default function NotFound() {
   return (
-    <div>
-      <h2>404 - The page cannot be found</h2>
-    </div>
+    <OneColumn cssModifier="narrow">
+      <h2>404 - Det er oss, ikke deg.</h2>
+      <p>Vi fant ikke det du forsøkte å finne. Det er ikke alt som er helt på plass ennå. Kanskje prøv et <Link to='/search'>søk</Link>?</p>
+    </OneColumn>
   );
 }

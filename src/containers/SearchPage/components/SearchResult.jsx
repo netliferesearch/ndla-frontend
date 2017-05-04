@@ -19,6 +19,7 @@ const SearchResult = ({ article, locale }) => (
         { titleI18N(article, locale, true) }
       </h3>
     </Link>
+    <p>{article.introduction[0] && article.introduction[0].introduction}</p>
   </div>
 );
 

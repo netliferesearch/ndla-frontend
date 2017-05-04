@@ -7,11 +7,11 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Masthead, MastheadItem, Logo, ClickToggle, TopicMenu } from '../../../lib';
-import { toTopic } from '../../routes';
+import { toTopic, toSubject } from '../../routes';
 import { getSubjectById } from '../SubjectPage/subjectSelectors';
 import { getSubjectMenu } from '../TopicPage/topicSelectors';
 import { SubjectShape, TopicShape } from '../../shapes';
@@ -25,7 +25,7 @@ const MastheadContainer = ({ subject, topics }) => (
     <MastheadItem left>
       { subject ?
         <ClickToggle title="Meny" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-          <TopicMenu subjectId={subject.id} toTopic={toTopicWithSubjectIdBound(subject.id)} topics={topics} />
+          <TopicMenu subjectId={subject.id} toSubject={toSubject(subject.id)} subject={subject.name} toTopic={toTopicWithSubjectIdBound(subject.id)} topics={topics} />
         </ClickToggle>
             : null
       }

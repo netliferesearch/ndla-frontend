@@ -30,13 +30,34 @@ class Resources extends Component {
 
   render() {
     const { router, topicResourcesByType } = this.props;
+    /**
+     * Horrible hack to concat interaktiviteter with oppgaver og aktiviteter
+     */
+    let newTopicResourcesByType = []
+    let interaktiviteter = []
+    topicResourcesByType.forEach((type, index) => {
+      if (type.id === 'urn:resource-type:e42462d3-0b18-40f1-a65f-48c182378823') {
+        type.resources.forEach(resource => resource.resourceTypes)
+        interaktiviteter = type.resources
+      } else {
+        newTopicResourcesByType.push(type)
+      }
+    })
+    newTopicResourcesByType.forEach(type => {
+      if(type.id === 'urn:resource-type:622364e0-8cea-4083-9ce1-74e33e14e0b4') {
+        type.resources = type.resources.concat(interaktiviteter)
+      }
+    })
+
     const { params } = router;
 
     const resourceToLinkProps = resource => resourceToLinkPropsHelper(resource, params.subjectId, params.topicId);
 
     return (
       <div>
-        {topicResourcesByType.map(type => (
+        {newTopicResourcesByType
+          .filter(type => type.id !== 'urn:resource-type:e42462d3-0b18-40f1-a65f-48c182378823')
+          .map(type => (
           <div key={type.id} {...classes('', type.name.replace(/æ/g, ''))}>
             <h1 {...classes('title')}>{type.name}</h1>
             <ResourceList resourceToLinkProps={resourceToLinkProps} resources={type.resources.map(resource => ({ ...resource, icon: type.name }))} />

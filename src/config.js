@@ -55,7 +55,7 @@ module.exports = Object.assign({
   port: process.env.PORT || '3000',
   redirectPort: process.env.NDLA_REDIRECT_PORT || '3001',
   googleTagMangerId: process.env.GOOGLE_TAG_MANGER_ID || undefined,
-  logEnvironment: process.env.NDLA_ENVIRONMENT || 'local',
+  logEnvironment: process.env.NDLA_ENVIRONMENT || 'staging',
   logglyApiKey: process.env.LOGGLY_API_KEY,
   disableSSR: process.env.DISABLE_SSR || false,
   ndlaApiUrl: process.env.NDLA_API_URL || apiDomain(),

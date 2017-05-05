@@ -12,7 +12,7 @@ import {
   initArticleScripts,
   removeEventListenerForResize,
   removeAsideClickListener } from 'ndla-article-scripts';
-import getLicenseByAbbreviation from 'ndla-licenses';
+import getLicenseByAbbreviation from '../../../../ndla-licenses';
 import SelectionPopover from 'react-selection-popover'
 import { Article as UIArticle, OneColumn } from '../../../../lib';
 import { injectT } from '../../../i18n';

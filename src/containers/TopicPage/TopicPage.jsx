@@ -64,7 +64,7 @@ class TopicPage extends Component {
         <OneColumn cssModifier="narrow">
           <section className="c-article-content">
             { article ? <TopicArticle article={article} openTitle={`${t('topicPage.openArticleTopic')}`} closeTitle={t('topicPage.closeArticleTopic')} /> : null }
-            <TopicResources subjectId={subjectId} topic={topic} topicPath={topicPath} />
+            <TopicResources showResources subjectId={subjectId} topic={topic} topicPath={topicPath} />
           </section>
         </OneColumn>
       </div>

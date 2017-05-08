@@ -43,12 +43,12 @@ class TopicResources extends Component {
   }
 
   render() {
-    const { subtopics, topic: { id: topicId }, subjectId, topicPath, t } = this.props;
+    const { subtopics, topic: { id: topicId }, subjectId, topicPath, t, showResources } = this.props;
     return (
       <ResourceWrapper>
         {subtopics.length > 0 && <h1 {...classes('title')}>{t('topicPage.topics')}</h1>}
         {subtopics.length > 0 && <TopicIntroductionList toTopic={toTopic(subjectId, topicPath)} topics={subtopics} />}
-        <Resources topicId={topicId} />
+        {showResources && <Resources topicId={topicId} />}
       </ResourceWrapper>
     );
   }
@@ -60,6 +60,7 @@ TopicResources.propTypes = {
   topic: TopicShape.isRequired,
   topicPath: PropTypes.arrayOf(TopicShape).isRequired,
   subtopics: PropTypes.arrayOf(TopicShape).isRequired,
+  showResources: PropTypes.bool
 };
 
 const mapDispatchToProps = {

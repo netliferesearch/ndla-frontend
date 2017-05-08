@@ -9,8 +9,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Masthead, MastheadItem, SiteNav, SiteNavItem, Logo, ClickToggle, TopicMenu } from '../../../lib';
-import { toSearch, toTopic } from '../../routes';
+import { Masthead, MastheadItem, Logo, ClickToggle, TopicMenu } from '../../../lib';
+import { toSubject, toTopic } from '../../routes';
 import { getSubjectById } from '../SubjectPage/subjectSelectors';
 import { getSubjectMenu } from '../TopicPage/topicSelectors';
 import { SubjectShape, TopicShape } from '../../shapes';
@@ -19,29 +19,18 @@ function toTopicWithSubjectIdBound(subjectId) {
   return toTopic.bind(undefined, subjectId);
 }
 
-const MastheadContainer = ({ t, subject, topics }) => (
+const MastheadContainer = ({ subject, topics }) => (
   <Masthead>
     <MastheadItem left>
-      <Logo to="/" altText="Nasjonal digital læringsarena" />
       { subject ?
-        <ClickToggle title={subject.name} className="c-topic-menu-container" buttonClassName="c-topic-menu-toggle-button">
-          <TopicMenu subjectId={subject.id} toTopic={toTopicWithSubjectIdBound(subject.id)} topics={topics} />
+        <ClickToggle title="Meny" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
+          <TopicMenu subjectId={subject.id} toSubject={toSubject(subject.id)} subject={subject.name} toTopic={toTopicWithSubjectIdBound(subject.id)} topics={topics} />
         </ClickToggle>
             : null
       }
     </MastheadItem>
     <MastheadItem right>
-      <SiteNav>
-        <SiteNavItem to={toSearch()}>
-          {t('siteNav.search')}
-        </SiteNavItem>
-        <SiteNavItem to="/#">
-          {t('siteNav.contact')}
-        </SiteNavItem>
-        <SiteNavItem to="/#">
-          {t('siteNav.help')}
-        </SiteNavItem>
-      </SiteNav>
+      <Logo to="/" altText="Nasjonal digital læringsarena" />
     </MastheadItem>
   </Masthead>
 );

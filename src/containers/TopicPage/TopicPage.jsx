@@ -9,7 +9,8 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Hero, OneColumn, TopicBreadcrumb, TopicArticle } from 'ndla-ui';
+// import { Hero, OneColumn, TopicBreadcrumb, TopicArticle } from 'ndla-ui';
+import { Hero, OneColumn, TopicBreadcrumb, TopicArticle } from '../../../lib';
 // import Helmet from 'react-helmet';
 
 import * as actions from './topicActions';

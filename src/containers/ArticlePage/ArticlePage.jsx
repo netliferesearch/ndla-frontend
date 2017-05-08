@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Helmet from 'react-helmet';
+// import Helmet from 'react-helmet';
 import { Hero, OneColumn, TopicBreadcrumb } from '../../../lib';
 import * as actions from './articleActions';
 import * as topicActions from '../TopicPage/topicActions';
@@ -61,7 +61,7 @@ class ArticlePage extends Component {
       scripts.push({ async: true, src: `https://cdn.mathjax.org/mathjax/2.7-latest/MathJax.js?config=/assets/${assets['mathjaxConfig.js']}`, type: 'text/javascript' });
     }
 
-    const metaDescription = article.metaDescription ? { name: 'description', content: article.metaDescription } : {};
+    // const metaDescription = article.metaDescription ? { name: 'description', content: article.metaDescription } : {};
 
     return (
       <div>
@@ -72,11 +72,6 @@ class ArticlePage extends Component {
             </div>
           </OneColumn>
         </Hero>
-        <Helmet
-          title={`NDLA | ${article.title}`}
-          meta={[metaDescription]}
-          script={scripts}
-        />
         <OneColumn cssModifier="narrow">
           <Article article={article} subject={subject} topicPath={topicPath} locale={locale} />
         </OneColumn>

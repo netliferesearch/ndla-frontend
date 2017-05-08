@@ -9,7 +9,7 @@
 import fetch from 'isomorphic-fetch';
 import { resolveJsonOrRejectWithError, apiResourceUrl, headerWithAccessToken } from '../../util/apiHelpers';
 
-const converterBaseUrl = `${process.env.CONVERTER_URL}/article-converter/raw`;
+const converterBaseUrl = 'https://ndla-article-converter.herokuapp.com/article-converter/raw';
 const baseUrl = apiResourceUrl('/article-api/v1/articles');
 
 export const fetchArticle = (id, locale, token) => fetch(`${converterBaseUrl}/${locale}/${id}`, { headers: headerWithAccessToken(token) }).then(resolveJsonOrRejectWithError);

@@ -9,7 +9,8 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Hero, OneColumn, TopicArticle, TopicBreadcrumb } from '../../../lib';
+import { Hero, OneColumn, TopicBreadcrumb, TopicArticle } from 'ndla-ui';
+// import Helmet from 'react-helmet';
 
 import * as actions from './topicActions';
 import * as subjectActions from '../SubjectPage/subjectActions';
@@ -23,21 +24,24 @@ import { toTopic } from '../../routes';
 
 class TopicPage extends Component {
   componentWillMount() {
-    const { params: { subjectId, topicId }, fetchTopics, fetchSubjects } = this.props;
+    const { match: { params }, fetchTopics, fetchSubjects } = this.props;
+    const { subjectId, topicId } = params;
     fetchTopics({ subjectId, topicId });
     fetchSubjects();
   }
 
   componentWillReceiveProps(nextProps) {
-    const { params: { subjectId, topicId }, fetchTopics } = this.props;
+    const { match: { params }, fetchTopics } = this.props;
+    const { subjectId, topicId } = params;
 
-    if (nextProps.params.topicId !== topicId) {
-      fetchTopics({ subjectId, topicId: nextProps.params.topicId });
+    if (nextProps.match.params.topicId !== topicId) {
+      fetchTopics({ subjectId, topicId: nextProps.match.params.topicId });
     }
   }
 
   render() {
-    const { params: { subjectId }, topic, article, t, topicPath, subject } = this.props;
+    const { match: { params }, topic, article, t, topicPath, subject } = this.props;
+    const { subjectId } = params;
     if (!topic) {
       return null;
     }
@@ -73,9 +77,11 @@ class TopicPage extends Component {
 }
 
 TopicPage.propTypes = {
-  params: PropTypes.shape({
-    subjectId: PropTypes.string.isRequired,
-    topicId: PropTypes.string,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      subjectId: PropTypes.string.isRequired,
+      topicId: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   fetchSubjects: PropTypes.func.isRequired,
   fetchTopics: PropTypes.func.isRequired,
@@ -91,7 +97,7 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { subjectId, topicId } = ownProps.params;
+  const { subjectId, topicId } = ownProps.match.params;
   const getTopicSelector = getTopic(subjectId, topicId);
   const getTopicArticleSelector = getTopicArticle(subjectId, topicId);
   const getTopicPathSelector = getTopicPath(subjectId, topicId);

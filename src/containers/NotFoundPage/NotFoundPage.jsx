@@ -6,15 +6,31 @@
  *
  */
 
-import React from 'react';
-import { OneColumn } from '../../../lib';
-import { Link } from 'react-router'
+import React, { PropTypes } from 'react';
+import { Route } from 'react-router-dom';
+
+const Status = ({ code, children }) => (
+  <Route
+    render={({ staticContext }) => {
+      const context = staticContext;
+      if (staticContext) {
+        context.status = code;
+      }
+      return children;
+    }}
+  />
+);
+
+Status.propTypes = {
+  code: PropTypes.number.isRequired,
+};
 
 export default function NotFound() {
   return (
-    <OneColumn cssModifier="narrow">
-      <h2>404 - Det er oss, ikke deg.</h2>
-      <p>Vi fant ikke det du forsøkte å finne. Det er ikke alt som er helt på plass ennå. Kanskje prøv et <Link to='/search'>søk</Link>?</p>
-    </OneColumn>
+    <Status code={404}>
+      <div>
+        <h2>404 - The page cannot be found</h2>
+      </div>
+    </Status>
   );
 }

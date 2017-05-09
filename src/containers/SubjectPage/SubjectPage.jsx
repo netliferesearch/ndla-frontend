@@ -66,7 +66,7 @@ class SubjectPage extends Component {
         <OneColumn cssModifier="narrow">
           <section className="c-article-content">
             <ResourceWrapper>
-              <h1>{t('subjectPage.tabs.topics')}</h1>
+              <h1 className="c-resources__title">{t('subjectPage.tabs.topics')}</h1>
               <TopicIntroductionList toTopic={toTopic(subject.id)} topics={topics} />
             </ResourceWrapper>
           </section>

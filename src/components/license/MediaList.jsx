@@ -7,10 +7,11 @@
  */
 
 import React, { PropTypes } from 'react';
+import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
 import { ClickableLicenseByline } from '../../../lib';
-import getLicenseByAbbreviation from '../../../license_lib';
-import BEMHelper from 'react-bem-helper';
+// import getLicenseByAbbreviation from '../../../license_lib';
+import getLicenseByAbbreviation from '../../../ndla-licenses';
 
 const oClasses = new BEMHelper({
   name: 'media',

@@ -8,16 +8,18 @@
 
 import React, { PropTypes, Component } from 'react';
 
-import { Article as UIArticle, LicenseByline, OneColumn } from 'ndla-ui';
+// import { Article as UIArticle, LicenseByline, OneColumn } from 'ndla-ui';
+import { Article as LicenseByline } from 'ndla-ui';
 import {
   initArticleScripts,
   removeEventListenerForResize,
   removeAsideClickListener } from 'ndla-article-scripts';
-import getLicenseByAbbreviation from 'ndla-licenses';
-// import { toTopic } from '../../../routes';
+import getLicenseByAbbreviation from '../../../../ndla-licenses';
+import { Article as UIArticle, OneColumn } from '../../../../lib';
 import { injectT } from '../../../i18n';
 import ToggleLicenseBox from './ToggleLicenseBox';
 import LicenseBox from '../../../components/license/LicenseBox';
+// import SelectionPopover from 'react-selection-popover'
 import { SubjectShape, TopicShape } from '../../../shapes';
 
 
@@ -40,7 +42,7 @@ class Article extends Component {
 
     return (
       <ToggleLicenseBox
-        openTitle={t('article.openLicenseBox', { contentType: article.contentType.toLowerCase() })}
+        openTitle={t('article.openLicenseBox', { contentType: article.contentType })}
         closeTitle={t('article.closeLicenseBox')}
         licenseBox={<LicenseBox article={article} locale={locale} license={license} />}
       >

@@ -11,12 +11,13 @@
  import { withRouter } from 'react-router-dom';
  import Helmet from 'react-helmet';
  import { PageContainer } from 'ndla-ui';
-
+import ReactStickyHeader from 'react-sticky-header';
  import { MessageShape } from '../../shapes';
  import Masthead from '../Masthead';
  import Footer from './components/Footer';
  import { getLocale } from '../Locale/localeSelectors';
  import { getMessages } from '../Messages/messagesSelectors';
+
  import Alerts from '../Messages/Alerts';
  import { injectT } from '../../i18n';
 
@@ -37,7 +38,16 @@
              { name: 'description', content: t('meta.description') },
            ]}
          />
-         <Masthead t={t} params={params} />
+          <ReactStickyHeader
+          // This will be the sticky strip.
+          header={
+            <div style={{backgroundColor: 'rgba(255,255,255,0.8)'}} className={('Header_root')}>
+              <Masthead t={t} params={params} />
+            </div>
+          }
+        >
+      <Masthead t={t} params={params} />
+  </ReactStickyHeader>
          {children}
          <Footer t={t} />
          <Alerts dispatch={dispatch} messages={messages} />

@@ -7,10 +7,10 @@
  */
 
 import React, { PropTypes } from 'react';
+import { Masthead, MastheadItem, SiteNav, SiteNavItem, Logo, ClickToggle, TopicMenu } from 'ndla-ui';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Masthead, MastheadItem, Logo, ClickToggle, TopicMenu } from '../../../lib';
-import { toSubject, toTopic } from '../../routes';
+import { toSearch, toTopic } from '../../routes';
 import { getSubjectById } from '../SubjectPage/subjectSelectors';
 import { getSubjectMenu } from '../TopicPage/topicSelectors';
 import { SubjectShape, TopicShape } from '../../shapes';
@@ -19,18 +19,29 @@ function toTopicWithSubjectIdBound(subjectId) {
   return toTopic.bind(undefined, subjectId);
 }
 
-const MastheadContainer = ({ subject, topics }) => (
+const MastheadContainer = ({ t, subject, topics }) => (
   <Masthead>
     <MastheadItem left>
+      <Logo to="/" altText="Nasjonal digital læringsarena" />
       { subject ?
-        <ClickToggle title="Meny" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-          <TopicMenu subjectId={subject.id} toSubject={toSubject(subject.id)} subject={subject.name} toTopic={toTopicWithSubjectIdBound(subject.id)} topics={topics} />
+        <ClickToggle title={subject.name} className="c-topic-menu-container" buttonClassName="c-topic-menu-toggle-button">
+          <TopicMenu subjectId={subject.id} toTopic={toTopicWithSubjectIdBound(subject.id)} topics={topics} />
         </ClickToggle>
             : null
       }
     </MastheadItem>
     <MastheadItem right>
-      <Logo to="/" altText="Nasjonal digital læringsarena" />
+      <SiteNav>
+        <SiteNavItem to={toSearch()}>
+          {t('siteNav.search')}
+        </SiteNavItem>
+        <SiteNavItem to="/#">
+          {t('siteNav.contact')}
+        </SiteNavItem>
+        <SiteNavItem to="/#">
+          {t('siteNav.help')}
+        </SiteNavItem>
+      </SiteNav>
     </MastheadItem>
   </Masthead>
 );
@@ -46,6 +57,7 @@ MastheadContainer.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps)
   const { subjectId } = ownProps.params;
   return {
     subject: getSubjectById(subjectId)(state),

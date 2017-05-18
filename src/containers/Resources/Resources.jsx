@@ -6,14 +6,17 @@
  *
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import BEMHelper from 'react-bem-helper';
 import { connect } from 'react-redux';
-import { ResourceList } from '../../../lib';
+import { ResourceList } from 'ndla-ui';
 import { ResourceTypeShape } from '../../shapes';
 import { getResourceTypesByTopicId } from './resourceSelectors';
-import { resourceToLinkProps as resourceToLinkPropsHelper } from './resourceHelpers';
+import {
+  resourceToLinkProps as resourceToLinkPropsHelper,
+} from './resourceHelpers';
 
 const classes = new BEMHelper({
   name: 'resource-group',
@@ -21,26 +24,30 @@ const classes = new BEMHelper({
 });
 
 class Resources extends Component {
-  componentWillMount() {
-  }
+  componentWillMount() {}
 
-  componentWillReceiveProps() {
-  }
+  componentWillReceiveProps() {}
 
   render() {
     const { match: { params }, topicResourcesByType } = this.props;
 
-    const resourceToLinkProps = resource => resourceToLinkPropsHelper(resource, params.subjectId, params.topicId);
+    const resourceToLinkProps = resource =>
+      resourceToLinkPropsHelper(resource, params.subjectId, params.topicId);
 
     return (
       <div>
         {topicResourcesByType.map(type => (
           <div key={type.id} {...classes('', type.name.replace(/æ/g, ''))}>
             <h1 {...classes('title')}>{type.name}</h1>
-            <ResourceList resourceToLinkProps={resourceToLinkProps} resources={type.resources.map(resource => ({ ...resource, icon: type.name }))} />
-          </div>),
-        )
-        }
+            <ResourceList
+              resourceToLinkProps={resourceToLinkProps}
+              resources={type.resources.map(resource => ({
+                ...resource,
+                icon: type.name,
+              }))}
+            />
+          </div>
+        ))}
       </div>
     );
   }
@@ -58,9 +65,9 @@ Resources.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const { topicId } = ownProps;
-  return ({
+  return {
     topicResourcesByType: getResourceTypesByTopicId(topicId)(state),
-  });
+  };
 };
 
 export default withRouter(connect(mapStateToProps)(Resources));

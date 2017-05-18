@@ -6,9 +6,10 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { OneColumn } from '../../../lib';
+import { OneColumn } from 'ndla-ui';
 import { injectT } from '../../i18n';
 import { SubjectShape } from '../../shapes';
 import { injectSubjects } from '../SubjectPage/subjectHOCs';

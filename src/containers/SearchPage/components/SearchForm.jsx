@@ -6,8 +6,9 @@
  *
  */
 
-import React, { Component, PropTypes } from 'react';
-import { Button } from '../../../../lib';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Button } from 'ndla-ui';
 import { injectT } from '../../../i18n';
 
 class SearchForm extends Component {
@@ -34,7 +35,8 @@ class SearchForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className="search-form">
         <input
-          type="text" className="search-form_query"
+          type="text"
+          className="search-form_query"
           onChange={this.handleQueryChange}
           value={this.state.query}
           placeholder={t('searchForm.placeholder')}

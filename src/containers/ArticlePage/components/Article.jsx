@@ -6,25 +6,25 @@
  *
  */
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // import { Article as UIArticle, LicenseByline, OneColumn } from 'ndla-ui';
 import { Article as LicenseByline } from 'ndla-ui';
 import {
   initArticleScripts,
   removeEventListenerForResize,
-  removeAsideClickListener } from 'ndla-article-scripts';
+  removeAsideClickListener,
+} from 'ndla-article-scripts';
 import getLicenseByAbbreviation from '../../../../ndla-licenses';
-import { Article as UIArticle, OneColumn } from '../../../../lib';
+import { Article as UIArticle, OneColumn } from 'ndla-ui';
 import { injectT } from '../../../i18n';
 import ToggleLicenseBox from './ToggleLicenseBox';
 import LicenseBox from '../../../components/license/LicenseBox';
 // import SelectionPopover from 'react-selection-popover'
 import { SubjectShape, TopicShape } from '../../../shapes';
 
-
 class Article extends Component {
-
   componentDidMount() {
     initArticleScripts();
   }
@@ -37,21 +37,29 @@ class Article extends Component {
   renderToggleLicenseBox(showByline = false) {
     const { article, locale, t } = this.props;
     const licenseType = article.copyright.license.license;
-    const authorsList = article.copyright.authors.map(author => author.name).join(', ');
+    const authorsList = article.copyright.authors
+      .map(author => author.name)
+      .join(', ');
     const license = getLicenseByAbbreviation(licenseType, locale);
 
     return (
       <ToggleLicenseBox
-        openTitle={t('article.openLicenseBox', { contentType: article.contentType })}
+        openTitle={t('article.openLicenseBox', {
+          contentType: article.contentType,
+        })}
         closeTitle={t('article.closeLicenseBox')}
-        licenseBox={<LicenseBox article={article} locale={locale} license={license} />}
-      >
-        { showByline ?
-          <LicenseByline license={license}>
-            <span className="article_meta">{authorsList}. Publisert: {article.created}</span>.
-          </LicenseByline>
-          : null
+        licenseBox={
+          <LicenseBox article={article} locale={locale} license={license} />
         }
+      >
+        {showByline
+          ? <LicenseByline license={license}>
+            <span className="article_meta">
+              {authorsList}. Publisert: {article.created}
+            </span>
+              .
+            </LicenseByline>
+          : null}
       </ToggleLicenseBox>
     );
   }
@@ -75,16 +83,24 @@ class Article extends Component {
         </OneColumn>
         <OneColumn cssModifier="narrow">
           <section>
-            { article.footNotes ? <UIArticle.FootNotes footNotes={article.footNotes} /> : null }
+            {article.footNotes
+              ? <UIArticle.FootNotes footNotes={article.footNotes} />
+              : null}
             {this.renderToggleLicenseBox(true)}
-            <a className="article-old-ndla-link" rel="noopener noreferrer" target="_blank" href={article.oldNdlaUrl}>Gå til orginal artikkel</a>
+            <a
+              className="article-old-ndla-link"
+              rel="noopener noreferrer"
+              target="_blank"
+              href={article.oldNdlaUrl}
+            >
+              Gå til orginal artikkel
+            </a>
           </section>
         </OneColumn>
       </section>
     );
   }
 }
-
 
 Article.propTypes = {
   article: PropTypes.shape({
@@ -98,6 +114,5 @@ Article.propTypes = {
   topicPath: PropTypes.arrayOf(TopicShape),
   locale: PropTypes.string.isRequired,
 };
-
 
 export default injectT(Article);

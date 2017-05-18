@@ -6,11 +6,12 @@
  *
  */
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 // import { Hero, OneColumn, TopicBreadcrumb, TopicArticle } from 'ndla-ui';
-import { Hero, OneColumn, TopicBreadcrumb, TopicArticle } from '../../../lib';
+import { Hero, OneColumn, TopicBreadcrumb, TopicArticle } from 'ndla-ui';
 // import Helmet from 'react-helmet';
 
 import * as actions from './topicActions';
@@ -21,7 +22,6 @@ import TopicResources from './TopicResources';
 import { SubjectShape, ArticleShape, TopicShape } from '../../shapes';
 import { injectT } from '../../i18n';
 import { toTopic } from '../../routes';
-
 
 class TopicPage extends Component {
   componentWillMount() {
@@ -41,7 +41,14 @@ class TopicPage extends Component {
   }
 
   render() {
-    const { match: { params }, topic, article, t, topicPath, subject } = this.props;
+    const {
+      match: { params },
+      topic,
+      article,
+      t,
+      topicPath,
+      subject,
+    } = this.props;
     const { subjectId } = params;
     if (!topic) {
       return null;
@@ -53,23 +60,34 @@ class TopicPage extends Component {
           <OneColumn cssModifier="narrow">
             <div className="c-hero__content">
               <section>
-                { subject ?
-                  <TopicBreadcrumb
+                {subject
+                  ? <TopicBreadcrumb
                     toSubjects={() => '/'}
                     subjectsTitle={t('breadcrumb.subjectsLinkText')}
                     subject={subject}
                     topicPath={topicPath.slice(0, -1)}
                     toTopic={toTopic}
                   />
-                : null }
+                  : null}
               </section>
             </div>
           </OneColumn>
         </Hero>
         <OneColumn cssModifier="narrow">
           <section className="c-article-content">
-            { article ? <TopicArticle article={article} openTitle={`${t('topicPage.openArticleTopic')}`} closeTitle={t('topicPage.closeArticleTopic')} /> : null }
-            <TopicResources showResources subjectId={subjectId} topic={topic} topicPath={topicPath} />
+            {article
+              ? <TopicArticle
+                article={article}
+                openTitle={`${t('topicPage.openArticleTopic')}`}
+                closeTitle={t('topicPage.closeArticleTopic')}
+              />
+              : null}
+            <TopicResources
+              showResources
+              subjectId={subjectId}
+              topic={topic}
+              topicPath={topicPath}
+            />
           </section>
         </OneColumn>
       </div>
@@ -111,7 +129,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  injectT,
-)(TopicPage);
+export default compose(connect(mapStateToProps, mapDispatchToProps), injectT)(
+  TopicPage,
+);

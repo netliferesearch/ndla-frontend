@@ -6,11 +6,12 @@
  *
  */
 
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import BEMHelper from 'react-bem-helper';
 import { compose } from 'redux';
-import { TopicIntroductionList, ResourceWrapper } from '../../../lib';
+import { TopicIntroductionList, ResourceWrapper } from 'ndla-ui';
 import { getSubtopicsWithIntroduction } from './topicSelectors';
 import * as resourceActions from '../Resources/resourceActions';
 import { injectT } from '../../i18n';
@@ -31,7 +32,11 @@ const classes = new BEMHelper({
 
 class TopicResources extends Component {
   componentWillMount() {
-    const { subjectId, topic: { id: topicId }, fetchTopicResources } = this.props;
+    const {
+      subjectId,
+      topic: { id: topicId },
+      fetchTopicResources,
+    } = this.props;
     fetchTopicResources({ subjectId, topicId });
   }
 
@@ -43,11 +48,23 @@ class TopicResources extends Component {
   }
 
   render() {
-    const { subtopics, topic: { id: topicId }, subjectId, topicPath, t, showResources } = this.props;
+    const {
+      subtopics,
+      topic: { id: topicId },
+      subjectId,
+      topicPath,
+      t,
+      showResources,
+    } = this.props;
     return (
       <ResourceWrapper>
-        {subtopics.length > 0 && <h1 {...classes('title')}>{t('topicPage.topics')}</h1>}
-        {subtopics.length > 0 && <TopicIntroductionList toTopic={toTopic(subjectId, topicPath)} topics={subtopics} />}
+        {subtopics.length > 0 &&
+          <h1 {...classes('title')}>{t('topicPage.topics')}</h1>}
+        {subtopics.length > 0 &&
+          <TopicIntroductionList
+            toTopic={toTopic(subjectId, topicPath)}
+            topics={subtopics}
+          />}
         {showResources && <Resources topicId={topicId} />}
       </ResourceWrapper>
     );
@@ -60,7 +77,7 @@ TopicResources.propTypes = {
   topic: TopicShape.isRequired,
   topicPath: PropTypes.arrayOf(TopicShape).isRequired,
   subtopics: PropTypes.arrayOf(TopicShape).isRequired,
-  showResources: PropTypes.bool
+  showResources: PropTypes.bool,
 };
 
 const mapDispatchToProps = {
@@ -69,13 +86,12 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state, ownProps) => {
   const { subjectId, topic: { id: topicId } } = ownProps;
-  return ({
+  return {
     subtopics: getSubtopicsWithIntroduction(subjectId, topicId)(state),
     resources: getResourcesByTopicId(topicId)(state),
-  });
+  };
 };
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  injectT,
-)(TopicResources);
+export default compose(connect(mapStateToProps, mapDispatchToProps), injectT)(
+  TopicResources,
+);

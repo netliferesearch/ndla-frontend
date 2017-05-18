@@ -6,7 +6,7 @@
  *
  */
 
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 
 export const ArticleShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
@@ -20,10 +20,12 @@ export const ArticleShape = PropTypes.shape({
 
 export const ArticleResultShape = PropTypes.shape({
   id: PropTypes.string.isRequired,
-  title: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    language: PropTypes.string.isRequired,
-  })).isRequired,
+  title: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      language: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 });
 
 export const SubjectShape = PropTypes.shape({

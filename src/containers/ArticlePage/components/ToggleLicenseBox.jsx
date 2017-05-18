@@ -6,9 +6,10 @@
  *
  */
 
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Button } from '../../../../lib';
+import { Button } from 'ndla-ui';
 
 class ToggleLicenseBox extends Component {
   constructor() {
@@ -30,12 +31,20 @@ class ToggleLicenseBox extends Component {
     const { expanded } = this.state;
 
     return (
-      <div className={classnames('license c-licensebox', { 'c-licensebox--expanded': expanded })}>
-        <Button stripped className="license-toggler" onClick={this.toogleLicenseBox} >
+      <div
+        className={classnames('license c-licensebox', {
+          'c-licensebox--expanded': expanded,
+        })}
+      >
+        <Button
+          stripped
+          className="license-toggler"
+          onClick={this.toogleLicenseBox}
+        >
           {expanded ? closeTitle : openTitle}
         </Button>
         {children}
-        { expanded ? licenseBox : null }
+        {expanded ? licenseBox : null}
       </div>
     );
   }

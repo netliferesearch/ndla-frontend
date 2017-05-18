@@ -6,11 +6,12 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Masthead, MastheadItem, Logo, ClickToggle, TopicMenu } from 'ndla-ui';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Masthead, MastheadItem, Logo, ClickToggle, TopicMenu } from '../../../lib';
-import { toSubject, toTopic } from '../../routes';
+import { toTopic } from '../../routes';
 import { getSubjectById } from '../SubjectPage/subjectSelectors';
 import { getSubjectMenu } from '../TopicPage/topicSelectors';
 import { SubjectShape, TopicShape } from '../../shapes';
@@ -22,12 +23,19 @@ function toTopicWithSubjectIdBound(subjectId) {
 const MastheadContainer = ({ subject, topics }) => (
   <Masthead>
     <MastheadItem left>
-      { subject ?
-        <ClickToggle title="Meny" className="c-topic-menu-container" buttonClassName="c-btn c-button--outline c-topic-menu-toggle-button">
-          <TopicMenu subjectId={subject.id} toSubject={toSubject(subject.id)} subject={subject.name} toTopic={toTopicWithSubjectIdBound(subject.id)} topics={topics} />
+      {subject
+        ? <ClickToggle
+          title={subject.name}
+          className="c-topic-menu-container"
+          buttonClassName="c-topic-menu-toggle-button"
+        >
+          <TopicMenu
+            subjectId={subject.id}
+            toTopic={toTopicWithSubjectIdBound(subject.id)}
+            topics={topics}
+          />
         </ClickToggle>
-            : null
-      }
+        : null}
     </MastheadItem>
     <MastheadItem right>
       <Logo to="/" altText="Nasjonal digital læringsarena" />
@@ -53,6 +61,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default compose(
-  connect(mapStateToProps),
-)(MastheadContainer);
+export default compose(connect(mapStateToProps))(MastheadContainer);

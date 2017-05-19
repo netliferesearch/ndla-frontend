@@ -43,7 +43,7 @@ class Resources extends Component {
               resourceToLinkProps={resourceToLinkProps}
               resources={type.resources.map(resource => ({
                 ...resource,
-                icon: type.name,
+                type: type.name,
               }))}
             />
           </div>

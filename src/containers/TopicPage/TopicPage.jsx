@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 // import { Hero, OneColumn, TopicBreadcrumb, TopicArticle } from 'ndla-ui';
-import { Hero, OneColumn, TopicBreadcrumb, TopicArticle } from 'ndla-ui';
+import { Hero, OneColumn, TopicBreadcrumb, TopicArticle, LayoutItem } from 'ndla-ui';
 // import Helmet from 'react-helmet';
 
 import * as actions from './topicActions';
@@ -57,7 +57,7 @@ class TopicPage extends Component {
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Hero>
-          <OneColumn cssModifier="narrow">
+          <OneColumn>
             <div className="c-hero__content">
               <section>
                 {subject
@@ -73,22 +73,24 @@ class TopicPage extends Component {
             </div>
           </OneColumn>
         </Hero>
-        <OneColumn cssModifier="narrow">
-          <section className="c-article-content">
-            {article
-              ? <TopicArticle
-                article={article}
-                openTitle={`${t('topicPage.openArticleTopic')}`}
-                closeTitle={t('topicPage.closeArticleTopic')}
+        <OneColumn>
+          <article className="c-article">
+            <LayoutItem layout="center">
+              {article
+                ? <TopicArticle
+                  article={article}
+                  openTitle={`${t('topicPage.openArticleTopic')}`}
+                  closeTitle={t('topicPage.closeArticleTopic')}
+                />
+                : null}
+              <TopicResources
+                showResources
+                subjectId={subjectId}
+                topic={topic}
+                topicPath={topicPath}
               />
-              : null}
-            <TopicResources
-              showResources
-              subjectId={subjectId}
-              topic={topic}
-              topicPath={topicPath}
-            />
-          </section>
+            </LayoutItem>
+          </article>
         </OneColumn>
       </div>
     );

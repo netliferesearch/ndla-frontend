@@ -10,14 +10,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // import { Article as UIArticle, LicenseByline, OneColumn } from 'ndla-ui';
-import { Article as LicenseByline } from 'ndla-ui';
+import { Article as LicenseByline, Icon, LayoutItem } from 'ndla-ui';
+import { Article as UIArticle } from 'ndla-ui';
 import {
   initArticleScripts,
   removeEventListenerForResize,
   removeAsideClickListener,
 } from 'ndla-article-scripts';
 import getLicenseByAbbreviation from '../../../../ndla-licenses';
-import { Article as UIArticle, OneColumn } from 'ndla-ui';
 import { injectT } from '../../../i18n';
 import ToggleLicenseBox from './ToggleLicenseBox';
 import LicenseBox from '../../../components/license/LicenseBox';
@@ -66,22 +66,23 @@ class Article extends Component {
 
   render() {
     const { article } = this.props;
+    const authorsList = article.copyright.authors
+      .map(author => author.name)
+      .join(', ');
 
     return (
-      <section className="c-article-content">
-        <OneColumn cssModifier="narrow">
-          {this.renderToggleLicenseBox()}
-          <OneColumn cssModifier="narrow">
-            <h1 className="c-article__title">{article.title}</h1>
-            <UIArticle.Introduction introduction={article.introduction} />
-          </OneColumn>
-        </OneColumn>
-        <OneColumn cssModifier="narrow">
-          <section className="c-article--narrow">
-            <div dangerouslySetInnerHTML={{ __html: article.content }} />
-          </section>
-        </OneColumn>
-        <OneColumn cssModifier="narrow">
+      <article className="c-article">
+        {this.renderToggleLicenseBox()}
+        <LayoutItem layout="center">
+          <h1 className="c-article__title">{article.title}</h1>
+          <UIArticle.Introduction introduction={article.introduction} />
+          <span className="c-article__byline">
+            <span className="c-article__authors"><Icon.User /> {authorsList}</span>
+            <span className="c-article__date"><Icon.Time /> Publisert: {article.created}</span>
+          </span>
+        </LayoutItem>
+        <LayoutItem layout="center">
+          <div dangerouslySetInnerHTML={{ __html: article.content }} />
           <section>
             {article.footNotes
               ? <UIArticle.FootNotes footNotes={article.footNotes} />
@@ -96,8 +97,8 @@ class Article extends Component {
               Gå til orginal artikkel
             </a>
           </section>
-        </OneColumn>
-      </section>
+        </LayoutItem>
+      </article>
     );
   }
 }

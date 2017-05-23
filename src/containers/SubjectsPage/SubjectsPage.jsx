@@ -9,7 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { OneColumn } from 'ndla-ui';
+import { OneColumn, LayoutItem } from 'ndla-ui';
 import { SubjectLinkList } from '../../components';
 import { injectSubjects } from '../SubjectPage/subjectHOCs';
 import { SubjectShape } from '../../shapes';
@@ -17,8 +17,12 @@ import { injectT } from '../../i18n';
 
 const SubjectsPage = ({ t, subjects }) => (
   <OneColumn>
-    <h2>{t('subjectsPage.chooseSubject')}</h2>
-    <SubjectLinkList subjects={subjects} />
+    <article className="c-article">
+      <LayoutItem layout="center">
+        <h2>{t('subjectsPage.chooseSubject')}</h2>
+        <SubjectLinkList subjects={subjects} />
+      </LayoutItem>
+    </article>
   </OneColumn>
 );
 

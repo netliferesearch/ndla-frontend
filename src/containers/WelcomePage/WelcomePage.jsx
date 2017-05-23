@@ -9,23 +9,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
-import { OneColumn } from 'ndla-ui';
+import { OneColumn, LayoutItem } from 'ndla-ui';
 import { injectT } from '../../i18n';
 import { SubjectShape } from '../../shapes';
 import { injectSubjects } from '../SubjectPage/subjectHOCs';
 import { SubjectLinkList } from '../../components';
 
 export const WelcomePage = ({ t, subjects }) =>
-  <div className="c-resources u-padding-top-large">
-    <OneColumn cssModifier="narrow">
-      <article>
-        <section>
-          <h1>{t('welcomePage.subjects')}</h1>
-          <SubjectLinkList subjects={subjects} />
-        </section>
-      </article>
-    </OneColumn>
-  </div>
+  <OneColumn>
+    <article>
+      <LayoutItem layout="center">
+        <h1>{t('welcomePage.subjects')}</h1>
+        <SubjectLinkList subjects={subjects} />
+      </LayoutItem>
+    </article>
+  </OneColumn>
 ;
 
 WelcomePage.propTypes = {

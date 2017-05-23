@@ -18,6 +18,7 @@ import {
   Hero,
   TopicIntroductionList,
   ResourceWrapper,
+  LayoutItem,
 } from 'ndla-ui';
 import { injectT } from '../../i18n';
 import * as actions from './subjectActions';
@@ -61,7 +62,7 @@ class SubjectPage extends Component {
     return (
       <div>
         <Hero>
-          <OneColumn cssModifier="narrow">
+          <OneColumn>
             <div className="c-hero__content">
               <section>
                 <div className="c-breadcrumb">
@@ -75,18 +76,20 @@ class SubjectPage extends Component {
             </div>
           </OneColumn>
         </Hero>
-        <OneColumn cssModifier="narrow">
-          <section className="c-article-content">
-            <ResourceWrapper>
-              <h1 className="c-resources__title">
-                {t('subjectPage.tabs.topics')}
-              </h1>
-              <TopicIntroductionList
-                toTopic={toTopic(subject.id)}
-                topics={topics}
-              />
-            </ResourceWrapper>
-          </section>
+        <OneColumn>
+          <article className="c-article">
+            <LayoutItem layout="center">
+              <ResourceWrapper>
+                <h1 className="c-resources__title">
+                  {t('subjectPage.tabs.topics')}
+                </h1>
+                <TopicIntroductionList
+                  toTopic={toTopic(subject.id)}
+                  topics={topics}
+                />
+              </ResourceWrapper>
+            </LayoutItem>
+          </article>
         </OneColumn>
       </div>
     );

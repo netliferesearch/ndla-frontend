@@ -9,6 +9,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Masthead, MastheadItem, Logo, ClickToggle, TopicMenu, SiteNav } from 'ndla-ui';
+// import { Masthead, MastheadItem, SiteNav, SiteNavItem, Logo, ClickToggle, TopicMenu } from 'ndla-ui';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { toTopic } from '../../routes';
@@ -58,7 +59,6 @@ MastheadContainer.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const { subjectId } = ownProps.params;
-  console.log((state))
   return {
     subject: getSubjectById(subjectId)(state),
     topics: getSubjectMenu(subjectId)(state),

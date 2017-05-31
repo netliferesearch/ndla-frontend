@@ -70,7 +70,6 @@ class Article extends Component {
 
     return (
       <article className="c-article">
-        {this.renderToggleLicenseBox()}
         <LayoutItem layout="center">
           <h1 className="c-article__title">{article.title}</h1>
           <UIArticle.Introduction introduction={article.introduction} />
@@ -78,14 +77,17 @@ class Article extends Component {
             <span className="c-article__authors"><Icon.User /> {authorsList}</span>
             <span className="c-article__date"><Icon.Time /> Publisert: {article.created}</span>
           </span>
+          {this.renderToggleLicenseBox()}
         </LayoutItem>
         <LayoutItem layout="center">
           <div dangerouslySetInnerHTML={{ __html: article.content }} />
+        </LayoutItem>
+        <LayoutItem layout="center">
           <section>
             {article.footNotes
               ? <UIArticle.FootNotes footNotes={article.footNotes} />
-              : null}
-            {this.renderToggleLicenseBox(true)}
+            : null}
+            {this.renderToggleLicenseBox(false)}
             <a
               className="article-old-ndla-link"
               rel="noopener noreferrer"

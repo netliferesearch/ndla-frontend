@@ -53,7 +53,7 @@ module.exports = Object.assign(
   {
     componentName: process.env.npm_package_name,
     host: process.env.NDLA_FRONTENTD_HOST || 'localhost',
-    port: process.env.NDLA_FRONTENTD_PORT || '3000', 
+    port: process.env.PORT || '3000', 
     redirectPort: process.env.NDLA_REDIRECT_PORT || '3001',
     googleTagMangerId: process.env.GOOGLE_TAG_MANGER_ID || undefined,
     logEnvironment: process.env.NDLA_ENVIRONMENT || 'local',

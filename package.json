@@ -96,6 +96,7 @@
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
+    "react-selection-popover": "^1.1.1",
     "react-tabs": "^0.8.0",
     "redux": "3.6.0",
     "redux-actions": "^2.0.3",

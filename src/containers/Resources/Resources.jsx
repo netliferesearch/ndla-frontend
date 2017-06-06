@@ -8,8 +8,9 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import BEMHelper from 'react-bem-helper';
+import { withRouter } from 'react-router-dom';
+// import BEMHelper from 'react-bem-helper';
 import { connect } from 'react-redux';
 import { ResourceList } from 'ndla-ui';
 import { ResourceTypeShape } from '../../shapes';
@@ -18,7 +19,7 @@ import {
   resourceToLinkProps as resourceToLinkPropsHelper,
 } from './resourceHelpers';
 
-const classes = new BEMHelper({
+const resClasses = new BEMHelper({
   name: 'resource-group',
   prefix: 'c-',
 });
@@ -37,9 +38,13 @@ class Resources extends Component {
     return (
       <div>
         {topicResourcesByType.map(type => (
-          <div key={type.id} {...classes('', type.name.replace(/æ/g, ''))}>
-            <h1 {...classes('title')}>{type.name}</h1>
+          <div
+            key={type.id}
+            {...resClasses('', [(type.name.replace(/æ/g, ''): '')])}
+          >
+            <h1 className="c-resources__title">{type.name}</h1>
             <ResourceList
+              type={type.name}
               resourceToLinkProps={resourceToLinkProps}
               resources={type.resources.map(resource => ({
                 ...resource,

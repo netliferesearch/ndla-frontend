@@ -30,7 +30,4 @@ WelcomePage.propTypes = {
   subjects: PropTypes.arrayOf(SubjectShape),
 };
 
-export default compose(
-  injectT,
-  injectSubjects,
-)(WelcomePage);
+export default compose(injectT, injectSubjects)(WelcomePage);

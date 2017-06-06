@@ -17,7 +17,7 @@ const SearchResult = ({ article, locale }) => (
   <div className="search-result">
     <Link className="search-result_link" to={toArticle(article.id)}>
       <h3 className="search-result_title">
-        { titleI18N(article, locale, true) }
+        {titleI18N(article, locale, true)}
       </h3>
     </Link>
     <p>{article.introduction[0] && article.introduction[0].introduction}</p>
@@ -28,6 +28,5 @@ SearchResult.propTypes = {
   article: ArticleResultShape.isRequired,
   locale: PropTypes.string.isRequired,
 };
-
 
 export default SearchResult;

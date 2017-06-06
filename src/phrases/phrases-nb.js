@@ -69,29 +69,7 @@ const phrases = {
       heading: 'Slik bruker du lydfiler',
     },
   },
-  resources: {
-    tabs: {
-      all: 'Alle',
-      learningpaths: 'Læringsstier',
-      subjectMaterial: 'Lærestoff',
-    },
-    subjectMaterial: {
-      title: 'Lærestoff',
-      description: 'Relaterte emneartikler',
-    },
-    learningpaths: {
-      title: 'Læringsstier',
-      description: 'Tilknyttet dette emnet',
-    },
-    tasks: {
-      title: 'Oppgaver og aktiviteter',
-      description: 'Relatert til emnet',
-    },
-    links: {
-      viewAllLearningPaths: 'Flere læringsstier \u2192',
-      viewAllSubjectMaterials: 'Mer lærestoff \u2192',
-    },
-  },
+  resources: {},
   searchPage: {
     noHits: 'Ingen artikler samsvarte med søket ditt på: {query}',
   },

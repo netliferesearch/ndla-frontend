@@ -9,26 +9,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import BEMHelper from 'react-bem-helper';
+// import BEMHelper from 'react-bem-helper';
 import { compose } from 'redux';
-import { TopicIntroductionList, ResourceWrapper } from 'ndla-ui';
-import { getSubtopicsWithIntroduction } from './topicSelectors';
 import * as resourceActions from '../Resources/resourceActions';
 import { injectT } from '../../i18n';
 import { TopicShape } from '../../shapes';
 import Resources from '../Resources/Resources';
 import { getResourcesByTopicId } from '../Resources/resourceSelectors';
-import { toTopicPartial } from '../../routes';
-
-const toTopic = (subjectId, topicPath) => {
-  const topicIds = topicPath.map(topic => topic.id);
-  return toTopicPartial(subjectId, ...topicIds);
-};
-
-const classes = new BEMHelper({
-  name: 'resources',
-  prefix: 'c-',
-});
 
 class TopicResources extends Component {
   componentWillMount() {
@@ -48,26 +35,8 @@ class TopicResources extends Component {
   }
 
   render() {
-    const {
-      subtopics,
-      topic: { id: topicId },
-      subjectId,
-      topicPath,
-      t,
-      showResources,
-    } = this.props;
-    return (
-      <ResourceWrapper>
-        {subtopics.length > 0 &&
-          <h1 {...classes('title')}>{t('topicPage.topics')}</h1>}
-        {subtopics.length > 0 &&
-          <TopicIntroductionList
-            toTopic={toTopic(subjectId, topicPath)}
-            topics={subtopics}
-          />}
-        {showResources && <Resources topicId={topicId} />}
-      </ResourceWrapper>
-    );
+    const { topic: { id: topicId } } = this.props;
+    return <Resources topicId={topicId} />;
   }
 }
 
@@ -75,9 +44,6 @@ TopicResources.propTypes = {
   subjectId: PropTypes.string.isRequired,
   fetchTopicResources: PropTypes.func.isRequired,
   topic: TopicShape.isRequired,
-  topicPath: PropTypes.arrayOf(TopicShape).isRequired,
-  subtopics: PropTypes.arrayOf(TopicShape).isRequired,
-  showResources: PropTypes.bool,
 };
 
 const mapDispatchToProps = {
@@ -85,9 +51,8 @@ const mapDispatchToProps = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { subjectId, topic: { id: topicId } } = ownProps;
+  const { topic: { id: topicId } } = ownProps;
   return {
-    subtopics: getSubtopicsWithIntroduction(subjectId, topicId)(state),
     resources: getResourcesByTopicId(topicId)(state),
   };
 };

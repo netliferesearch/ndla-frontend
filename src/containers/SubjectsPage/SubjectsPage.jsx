@@ -30,7 +30,4 @@ SubjectsPage.propTypes = {
   subjects: PropTypes.arrayOf(SubjectShape).isRequired,
 };
 
-export default compose(
-  injectT,
-  injectSubjects,
-)(SubjectsPage);
+export default compose(injectT, injectSubjects)(SubjectsPage);

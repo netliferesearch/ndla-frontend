@@ -9,7 +9,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
-import { MediaList, MediaListItem, MediaListItemImage, MediaListItemBody, MediaListItemActions, MediaListItemMeta } from './MediaList';
+import {
+  MediaList,
+  MediaListItem,
+  MediaListItemImage,
+  MediaListItemBody,
+  MediaListItemActions,
+  MediaListItemMeta,
+} from './MediaList';
 import Icon from '../Icon';
 import { CopyrightObjectShape } from '../../shapes';
 
@@ -18,7 +25,10 @@ const ImageLicenseInfo = ({ image, locale }) => (
     <MediaListItemImage>
       <img width="260" alt={image.altText} src={`${image.src}?width=260`} />
     </MediaListItemImage>
-    <MediaListItemBody license={image.copyright.license.license} locale={locale}>
+    <MediaListItemBody
+      license={image.copyright.license.license}
+      locale={locale}
+    >
       <MediaListItemActions>
         <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
         <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
@@ -38,7 +48,9 @@ const ImageLicenseList = ({ images, heading, description, locale }) => (
     <h2>{heading}</h2>
     <p>{description}</p>
     <MediaList>
-      { images.map(image => <ImageLicenseInfo image={image} key={uuid()} locale={locale} />) }
+      {images.map(image => (
+        <ImageLicenseInfo image={image} key={uuid()} locale={locale} />
+      ))}
     </MediaList>
   </div>
 );
@@ -47,6 +59,7 @@ ImageLicenseList.propTypes = {
   heading: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   locale: PropTypes.string.isRequired,
-  images: PropTypes.arrayOf(CopyrightObjectShape) };
+  images: PropTypes.arrayOf(CopyrightObjectShape),
+};
 
 export default ImageLicenseList;

@@ -10,8 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-// import { Hero, OneColumn, TopicBreadcrumb, TopicArticle } from 'ndla-ui';
-import { Hero, OneColumn, TopicBreadcrumb, TopicArticle, LayoutItem } from 'ndla-ui';
+import { Hero, OneColumn, TopicBreadcrumb, LayoutItem, Article } from 'ndla-ui';
 // import Helmet from 'react-helmet';
 
 import * as actions from './topicActions';
@@ -19,9 +18,26 @@ import * as subjectActions from '../SubjectPage/subjectActions';
 import { getTopicArticle, getTopic, getTopicPath } from './topicSelectors';
 import { getSubjectById } from '../SubjectPage/subjectSelectors';
 import TopicResources from './TopicResources';
+// import SubTopics from './SubTopics';
 import { SubjectShape, ArticleShape, TopicShape } from '../../shapes';
 import { injectT } from '../../i18n';
 import { toTopic } from '../../routes';
+
+const TopicArticle = ({ article }) => (
+  <div>
+    <h1>{article.title}</h1>
+    <Article.Introduction introduction={article.introduction} />
+    {/* <ArticleByline article={article} />*/}
+    <Article.Content content={article.content} />
+    {article.footNotes
+      ? <Article.FootNotes footNotes={article.footNotes} />
+      : null}
+  </div>
+);
+
+TopicArticle.propTypes = {
+  article: ArticleShape.isRequired,
+};
 
 class TopicPage extends Component {
   componentWillMount() {
@@ -54,6 +70,16 @@ class TopicPage extends Component {
       return null;
     }
 
+    // const metaDescription = article
+    //   ? { name: 'description', content: article.metaDescription }
+    //   : {};
+    // const title = article ? article.title : topic.name;
+    // const scripts = article
+    //   ? article.requiredLibraries.map(lib => ({
+    //     src: lib.url,
+    //     type: lib.mediaType,
+    //   }))
+    //   : [];
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Hero>
@@ -67,8 +93,13 @@ class TopicPage extends Component {
                     subject={subject}
                     topicPath={topicPath.slice(0, -1)}
                     toTopic={toTopic}
-                  />
+                  >
+                    {/* {t('breadcrumb.label')}*/}
+                  </TopicBreadcrumb>
                   : null}
+                <h1 className="c-hero__title" style={{ clear: 'both' }}>
+                  {topic.name}
+                </h1>
               </section>
             </div>
           </OneColumn>
@@ -79,10 +110,10 @@ class TopicPage extends Component {
               {article
                 ? <TopicArticle
                   article={article}
-                  openTitle={`${t('topicPage.openArticleTopic')}`}
-                  closeTitle={t('topicPage.closeArticleTopic')}
                 />
                 : null}
+            </LayoutItem>
+            <LayoutItem layout="expand">
               <TopicResources
                 showResources
                 subjectId={subjectId}

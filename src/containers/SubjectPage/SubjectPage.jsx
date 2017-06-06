@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-// import { ResourceWrapper } from 'ndla-ui';
+// import { OneColumn, Hero, TopicIntroductionList } from 'ndla-ui';
 import { Link } from 'react-router-dom';
 import defined from 'defined';
 import {
@@ -66,12 +66,14 @@ class SubjectPage extends Component {
             <div className="c-hero__content">
               <section>
                 <div className="c-breadcrumb">
+                  {/* {t('breadcrumb.label')}*/}
                   <ol className="c-breadcrumb__list">
                     <li className="c-breadcrumb__item">
                       <Link to="/">{t('breadcrumb.subjectsLinkText')}</Link> ›
                     </li>
                   </ol>
                 </div>
+                {/* <h1 className="c-hero__title">{subject.name}</h1>*/}
               </section>
             </div>
           </OneColumn>

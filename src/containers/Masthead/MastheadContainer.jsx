@@ -8,11 +8,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Masthead, MastheadItem, Logo, ClickToggle, TopicMenu, SiteNav } from 'ndla-ui';
-// import { Masthead, MastheadItem, SiteNav, SiteNavItem, Logo, ClickToggle, TopicMenu } from 'ndla-ui';
+import {
+  Masthead,
+  MastheadItem,
+  SiteNav,
+  SiteNavItem,
+  Logo,
+  ClickToggle,
+  TopicMenu,
+} from 'ndla-ui';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { toTopic } from '../../routes';
+import { toTopic, toSearch } from '../../routes';
 import { getSubjectById } from '../SubjectPage/subjectSelectors';
 import { getSubjectMenu } from '../TopicPage/topicSelectors';
 import { SubjectShape, TopicShape } from '../../shapes';
@@ -21,11 +28,10 @@ function toTopicWithSubjectIdBound(subjectId) {
   return toTopic.bind(undefined, subjectId);
 }
 
-const MastheadContainer = ({ subject, topics }) => (
+const MastheadContainer = ({ subject, topics, t }) => (
   <Masthead>
     <MastheadItem left>
-      <SiteNav>
-        {subject
+      {subject
         ? <ClickToggle
           title={subject.name}
           className="c-topic-menu-container"
@@ -38,8 +44,6 @@ const MastheadContainer = ({ subject, topics }) => (
           />
         </ClickToggle>
         : null}
-      </SiteNav>
-
     </MastheadItem>
     <MastheadItem right>
       <Logo to="/" altText="Nasjonal digital læringsarena" />

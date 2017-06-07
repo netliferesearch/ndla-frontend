@@ -69,7 +69,7 @@ class SubjectPage extends Component {
                   {/* {t('breadcrumb.label')}*/}
                   <ol className="c-breadcrumb__list">
                     <li className="c-breadcrumb__item">
-                      <Link to="/">{t('breadcrumb.subjectsLinkText')}</Link> ›
+                      <Link to="/">{t('breadcrumb.subjectsLinkText')}</Link>
                     </li>
                   </ol>
                 </div>
@@ -80,8 +80,7 @@ class SubjectPage extends Component {
         </Hero>
         <OneColumn>
           <article className="c-article">
-            <LayoutItem layout="center">
-              <ResourceWrapper>
+              <LayoutItem layout="extend">
                 <h1 className="c-resources__title">
                   {t('subjectPage.tabs.topics')}
                 </h1>
@@ -89,8 +88,7 @@ class SubjectPage extends Component {
                   toTopic={toTopic(subject.id)}
                   topics={topics}
                 />
-              </ResourceWrapper>
-            </LayoutItem>
+              </LayoutItem>
           </article>
         </OneColumn>
       </div>

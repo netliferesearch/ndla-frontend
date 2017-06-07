@@ -28,20 +28,13 @@ const AudioLicenseInfo = ({ audio, locale }) => (
     <MediaListItemBody
       license={audio.copyright.license.license}
       locale={locale}>
+      title="Regler for bruk av lydfilen"
       <MediaListItemActions>
-        <button
-          className="c-button c-button--small c-button--transparent"
-          type="button">
-          <Icon.Copy className="c-modal__button-icon" />Kopier referanse
-        </button>
-        <a
-          href={audio.src}
-          className="c-button c-button--small c-button--transparent"
-          download>
-          <Icon.Download className="c-modal__button-icon" />Last ned
-        </a>
+        <h3 className="c-medialist__title">Slik skal du referere til teksten</h3>
+        <MediaListItemMeta authors={image.copyright.authors} />
+        <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+        <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned</button>
       </MediaListItemActions>
-      <MediaListItemMeta authors={audio.copyright.authors} />
     </MediaListItemBody>
   </MediaListItem>
 );

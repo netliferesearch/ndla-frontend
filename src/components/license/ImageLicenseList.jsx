@@ -28,12 +28,14 @@ const ImageLicenseInfo = ({ image, locale }) => (
     <MediaListItemBody
       license={image.copyright.license.license}
       locale={locale}
+      title="Regler for bruk av bildet"
     >
       <MediaListItemActions>
-        <button className="c-button c-button--small c-button--transparent" type="button"><Icon.Copy className="c-modal__button-icon" /> Kopier referanse</button>
-        <button className="c-button c-button--small c-button--transparent" type="button"><Icon.OpenWindow className="c-modal__button-icon" /> Vis bilde</button>
+        <h3 className="c-medialist__title">Slik skal du referere til teksten</h3>
+        <MediaListItemMeta authors={image.copyright.authors} />
+        <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+        <button className="c-button c-button--outline c-licenseToggle__button" type="button">Vis bilde</button>
       </MediaListItemActions>
-      <MediaListItemMeta authors={image.copyright.authors} />
     </MediaListItemBody>
   </MediaListItem>
 );

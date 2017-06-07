@@ -27,21 +27,15 @@ const TextLicenseInfo = ({ text, locale }) => (
     </MediaListItemImage>
     <MediaListItemBody
       license={text.copyright.license.license}
-      title={text.title}
+      title="Regler for bruk av teksten"
       locale={locale}>
       <MediaListItemActions>
-        <button
-          className="c-button c-button--small c-button--transparent"
-          type="button">
-          <Icon.Copy className="c-modal__button-icon" /> Kopier referanse
-        </button>
-        <button
-          className="c-button c-button--small c-button--transparent"
-          type="button">
-          <Icon.Download className="c-modal__button-icon" /> Last ned
-        </button>
+        <h3 className="c-medialist__title">Slik skal du referere til teksten</h3>
+        <MediaListItemMeta authors={text.copyright.authors} />
+        <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
+        <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned</button>
       </MediaListItemActions>
-      <MediaListItemMeta authors={text.copyright.authors} />
+
     </MediaListItemBody>
   </MediaListItem>
 );

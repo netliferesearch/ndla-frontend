@@ -113,7 +113,7 @@ class TopicPage extends Component {
                 />
                 : null}
             </LayoutItem>
-            <LayoutItem layout="expand">
+            <LayoutItem layout="extend">
               <TopicResources
                 showResources
                 subjectId={subjectId}

@@ -71,7 +71,7 @@ class Article extends Component {
     return (
       <article className="c-article">
         <LayoutItem layout="center">
-          <h1 className="c-article__title c-article__title--icon"><Icon.Document /> {article.title}</h1>
+          <h1 className="c-article__title c-article__title--icon"><Icon.Document />{article.title}</h1>
           <UIArticle.Introduction introduction={article.introduction} />
           <span className="c-article__byline">
             <span className="c-article__authors"><Icon.User /> {authorsList}</span>

@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import Helmet from 'react-helmet';
+import Helmet from 'react-helmet';
 import { Hero, OneColumn, TopicBreadcrumb } from 'ndla-ui';
 import * as actions from './articleActions';
 import * as topicActions from '../TopicPage/topicActions';
@@ -76,15 +76,24 @@ class ArticlePage extends Component {
       });
     }
 
+    const metaDescription = article.metaDescription
+      ? { name: 'description', content: article.metaDescription }
+      : {};
+
     return (
       <div>
         <Hero red>
           <OneColumn cssModifier="narrow">
             <div className="c-hero__content">
-              { subject ? <TopicBreadcrumb toSubjects={() => '/'} subjectsTitle="" subject={subject} topicPath={topicPath} toTopic={toTopic} /> : null }
+              { subject ? <TopicBreadcrumb toSubjects={() => '/'} subjectsTitle="Fag" subject={subject} topicPath={topicPath} toTopic={toTopic} /> : null }
             </div>
           </OneColumn>
         </Hero>
+        <Helmet
+          title={`NDLA | ${article.title}`}
+          meta={[metaDescription]}
+          script={scripts}
+        />
         <OneColumn cssModifier="narrow">
           <Article article={article} subject={subject} topicPath={topicPath} locale={locale} />
         </OneColumn>

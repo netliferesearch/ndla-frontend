@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { Hero, OneColumn, TopicBreadcrumb } from 'ndla-ui';
+import { Hero, OneColumn, TopicBreadcrumb, LayoutItem } from 'ndla-ui';
 import * as actions from './articleActions';
 import * as topicActions from '../TopicPage/topicActions';
 import { getTopicPath } from '../TopicPage/topicSelectors';
@@ -20,6 +20,7 @@ import { getArticle } from './articleSelectors';
 import { getLocale } from '../Locale/localeSelectors';
 import { ArticleShape, SubjectShape, TopicShape } from '../../shapes';
 import { toTopic } from '../../routes';
+import TopicResources from '../TopicPage/TopicResources';
 import Article from './components/Article';
 import config from '../../config';
 

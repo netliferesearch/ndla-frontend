@@ -11,15 +11,15 @@ import PropTypes from 'prop-types';
 import {
   Masthead,
   MastheadItem,
-  SiteNav,
-  SiteNavItem,
+  // SiteNav,
+  // SiteNavItem,
   Logo,
   ClickToggle,
   TopicMenu,
 } from 'ndla-ui';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { toTopic, toSearch } from '../../routes';
+import { toTopic } from '../../routes';
 import { getSubjectById } from '../SubjectPage/subjectSelectors';
 import { getSubjectMenu } from '../TopicPage/topicSelectors';
 import { SubjectShape, TopicShape } from '../../shapes';
@@ -28,12 +28,12 @@ function toTopicWithSubjectIdBound(subjectId) {
   return toTopic.bind(undefined, subjectId);
 }
 
-const MastheadContainer = ({ subject, topics, t }) => (
+const MastheadContainer = ({ subject, topics }) => (
   <Masthead>
     <MastheadItem left>
       {subject
         ? <ClickToggle
-          title={subject.name}
+          title="Meny"
           className="c-topic-menu-container"
           buttonClassName="c-topic-menu-toggle-button"
         >

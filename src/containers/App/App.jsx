@@ -39,9 +39,8 @@ export class App extends React.Component {
         <Switch>
           <Route
             path={`${match.url}subjects/:subjectId`}
-            render={({ match: routeMatch }) => (
-              <Masthead t={t} params={routeMatch.params} />
-            )}
+            render={({ match: routeMatch }) =>
+              <Masthead t={t} params={routeMatch.params} />}
           />
           <Route render={() => <Masthead t={t} params={{}} />} />
         </Switch>

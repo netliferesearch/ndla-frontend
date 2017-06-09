@@ -9,20 +9,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// import { Article as UIArticle, LicenseByline, OneColumn } from 'ndla-ui';
-import { Article as LicenseByline, Icon, LayoutItem } from 'ndla-ui';
-import { Article as UIArticle } from 'ndla-ui';
+import { Article as UIArticle, LicenseByline, LayoutItem } from 'ndla-ui';
 import {
   initArticleScripts,
   removeEventListenerForResize,
   removeAsideClickListener,
 } from 'ndla-article-scripts';
-import getLicenseByAbbreviation from '../../../../ndla-licenses';
+import getLicenseByAbbreviation from 'ndla-licenses';
 import { injectT } from '../../../i18n';
 import ToggleLicenseBox from './ToggleLicenseBox';
+import ArticleByline from './ArticleByline';
 import LicenseBox from '../../../components/license/LicenseBox';
-// import SelectionPopover from 'react-selection-popover'
-import { SubjectShape, TopicShape } from '../../../shapes';
 
 class Article extends Component {
   componentDidMount() {
@@ -64,41 +61,35 @@ class Article extends Component {
 
   render() {
     const { article } = this.props;
-    const authorsList = article.copyright.authors
-      .map(author => author.name)
-      .join(', ');
 
     return (
-      <article className="c-article">
+      <section className="c-article">
         <LayoutItem layout="center">
-          <h1 className="c-article__title c-article__title--icon"><Icon.Document />{article.title}</h1>
+          <h1>{article.title}</h1>
           <UIArticle.Introduction introduction={article.introduction} />
-          <span className="c-article__byline">
-            <span className="c-article__authors"><Icon.User /> {authorsList}</span>
-            <span className="c-article__date"><Icon.Time /> Publisert: {article.created}</span>
-          </span>
+          <ArticleByline
+            authors={article.copyright.authors}
+            updated={article.updated}
+          />
           {this.renderToggleLicenseBox()}
         </LayoutItem>
         <LayoutItem layout="center">
-          <div dangerouslySetInnerHTML={{ __html: article.content }} />
+          <UIArticle.Content content={article.content} />
         </LayoutItem>
         <LayoutItem layout="center">
-          <section>
-            {article.footNotes
-              ? <UIArticle.FootNotes footNotes={article.footNotes} />
+          {article.footNotes
+            ? <UIArticle.FootNotes footNotes={article.footNotes} />
             : null}
-            {this.renderToggleLicenseBox(false)}
-            <a
-              className="article-old-ndla-link"
-              rel="noopener noreferrer"
-              target="_blank"
-              href={article.oldNdlaUrl}
-            >
-              Gå til orginal artikkel
-            </a>
-          </section>
+          {this.renderToggleLicenseBox()}
+          <a
+            className="article-old-ndla-link"
+            rel="noopener noreferrer"
+            target="_blank"
+            href={article.oldNdlaUrl}>
+            Gå til orginal artikkel
+          </a>
         </LayoutItem>
-      </article>
+      </section>
     );
   }
 }
@@ -111,8 +102,6 @@ Article.propTypes = {
       authors: PropTypes.array.isRequired,
     }).isRequired,
   }).isRequired,
-  subject: SubjectShape,
-  topicPath: PropTypes.arrayOf(TopicShape),
   locale: PropTypes.string.isRequired,
 };
 

@@ -20,7 +20,7 @@ import {
 import Icon from '../Icon';
 import { CopyrightObjectShape } from '../../shapes';
 
-const ImageLicenseInfo = ({ image, locale }) => (
+const ImageLicenseInfo = ({ image, locale }) =>
   <MediaListItem>
     <MediaListItemImage>
       <img width="260" alt={image.altText} src={`${image.src}?width=260`} />
@@ -37,25 +37,23 @@ const ImageLicenseInfo = ({ image, locale }) => (
         <button className="c-button c-button--outline c-licenseToggle__button" type="button">Vis bilde</button>
       </MediaListItemActions>
     </MediaListItemBody>
-  </MediaListItem>
-);
+  </MediaListItem>;
 
 ImageLicenseInfo.propTypes = {
   locale: PropTypes.string.isRequired,
   image: CopyrightObjectShape.isRequired,
 };
 
-const ImageLicenseList = ({ images, heading, description, locale }) => (
+const ImageLicenseList = ({ images, heading, description, locale }) =>
   <div>
     <h2>{heading}</h2>
     <p>{description}</p>
     <MediaList>
-      {images.map(image => (
-        <ImageLicenseInfo image={image} key={uuid()} locale={locale} />
-      ))}
+      {images.map(image =>
+        <ImageLicenseInfo image={image} key={uuid()} locale={locale} />,
+      )}
     </MediaList>
-  </div>
-);
+  </div>;
 
 ImageLicenseList.propTypes = {
   heading: PropTypes.string.isRequired,

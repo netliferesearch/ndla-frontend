@@ -23,7 +23,7 @@ import { SubjectShape, ArticleShape, TopicShape } from '../../shapes';
 import { injectT } from '../../i18n';
 import { toTopic } from '../../routes';
 
-const TopicArticle = ({ article }) => (
+const TopicArticle = ({ article }) =>
   <div>
     <h1>{article.title}</h1>
     <Article.Introduction introduction={article.introduction} />
@@ -32,8 +32,7 @@ const TopicArticle = ({ article }) => (
     {article.footNotes
       ? <Article.FootNotes footNotes={article.footNotes} />
       : null}
-  </div>
-);
+  </div>;
 
 TopicArticle.propTypes = {
   article: ArticleShape.isRequired,

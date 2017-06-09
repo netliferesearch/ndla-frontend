@@ -15,9 +15,7 @@ import { connect } from 'react-redux';
 import { ResourceList } from 'ndla-ui';
 import { ResourceTypeShape } from '../../shapes';
 import { getResourceTypesByTopicId } from './resourceSelectors';
-import {
-  resourceToLinkProps as resourceToLinkPropsHelper,
-} from './resourceHelpers';
+import { resourceToLinkProps as resourceToLinkPropsHelper } from './resourceHelpers';
 
 const resClasses = new BEMHelper({
   name: 'resource-group',
@@ -37,7 +35,7 @@ class Resources extends Component {
 
     return (
       <div>
-        {topicResourcesByType.map(type => (
+        {topicResourcesByType.map(type =>
           <div
             key={type.id}
             {...resClasses('', [(type.name.replace(/æ/g, ''): '')])}
@@ -51,8 +49,8 @@ class Resources extends Component {
                 type: type.name,
               }))}
             />
-          </div>
-        ))}
+          </div>,
+        )}
       </div>
     );
   }

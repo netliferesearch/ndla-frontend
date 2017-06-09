@@ -20,7 +20,7 @@ import {
 import Icon from '../Icon';
 import { CopyrightObjectShape } from '../../shapes';
 
-const AudioLicenseInfo = ({ audio, locale }) => (
+const AudioLicenseInfo = ({ audio, locale }) =>
   <MediaListItem>
     <MediaListItemImage>
       <Icon.Audio className="c-medialist__icon" />
@@ -36,24 +36,22 @@ const AudioLicenseInfo = ({ audio, locale }) => (
         <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned</button>
       </MediaListItemActions>
     </MediaListItemBody>
-  </MediaListItem>
-);
+  </MediaListItem>;
 
 AudioLicenseInfo.propTypes = {
   locale: PropTypes.string.isRequired,
   audio: CopyrightObjectShape.isRequired,
 };
 
-const AudioLicenseList = ({ audios, heading, locale }) => (
+const AudioLicenseList = ({ audios, heading, locale }) =>
   <div>
     <h2>{heading}</h2>
     <MediaList>
-      {audios.map(audio => (
-        <AudioLicenseInfo audio={audio} key={uuid()} locale={locale} />
-      ))}
+      {audios.map(audio =>
+        <AudioLicenseInfo audio={audio} key={uuid()} locale={locale} />,
+      )}
     </MediaList>
-  </div>
-);
+  </div>;
 
 AudioLicenseList.propTypes = {
   heading: PropTypes.string.isRequired,

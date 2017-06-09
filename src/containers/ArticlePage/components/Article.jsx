@@ -9,7 +9,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Article as UIArticle, LicenseByline, LayoutItem } from 'ndla-ui';
+import { Article as UIArticle, Icon, LicenseByline, LayoutItem } from 'ndla-ui';
 import {
   initArticleScripts,
   removeEventListenerForResize,
@@ -65,7 +65,7 @@ class Article extends Component {
     return (
       <section className="c-article">
         <LayoutItem layout="center">
-          <h1>{article.title}</h1>
+          <h1 className="c-article__title c-article__title--icon"><Icon.Document />{article.title}</h1>
           <UIArticle.Introduction introduction={article.introduction} />
           <ArticleByline
             authors={article.copyright.authors}

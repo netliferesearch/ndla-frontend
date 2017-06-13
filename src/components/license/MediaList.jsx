@@ -30,7 +30,7 @@ export const MediaList = ({ children }) =>
   </ul>;
 
 export const MediaListItem = ({ children }) =>
-  <li {...oClasses(null, null, cClasses().className)}>
+  <li {...oClasses('item', null, cClasses('item').className)}>
     {children}
   </li>;
 

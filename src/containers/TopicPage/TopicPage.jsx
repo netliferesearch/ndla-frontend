@@ -18,7 +18,7 @@ import * as subjectActions from '../SubjectPage/subjectActions';
 import { getTopicArticle, getTopic, getTopicPath } from './topicSelectors';
 import { getSubjectById } from '../SubjectPage/subjectSelectors';
 import TopicResources from './TopicResources';
-// import SubTopics from './SubTopics';
+import SubTopics from './SubTopics';
 import { SubjectShape, ArticleShape, TopicShape } from '../../shapes';
 import { injectT } from '../../i18n';
 import { toTopic } from '../../routes';
@@ -109,6 +109,11 @@ class TopicPage extends Component {
                 : null}
             </LayoutItem>
             <LayoutItem layout="extend">
+              <SubTopics
+                subjectId={subjectId}
+                topic={topic}
+                topicPath={topicPath}
+              />
               <TopicResources
                 showResources
                 subjectId={subjectId}

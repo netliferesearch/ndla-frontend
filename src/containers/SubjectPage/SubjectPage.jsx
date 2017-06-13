@@ -17,7 +17,7 @@ import {
   OneColumn,
   Hero,
   TopicIntroductionList,
-  ResourceWrapper,
+  // ResourceWrapper,
   LayoutItem,
 } from 'ndla-ui';
 import { injectT } from '../../i18n';

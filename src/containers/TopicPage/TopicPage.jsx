@@ -69,16 +69,6 @@ class TopicPage extends Component {
       return null;
     }
 
-    // const metaDescription = article
-    //   ? { name: 'description', content: article.metaDescription }
-    //   : {};
-    // const title = article ? article.title : topic.name;
-    // const scripts = article
-    //   ? article.requiredLibraries.map(lib => ({
-    //     src: lib.url,
-    //     type: lib.mediaType,
-    //   }))
-    //   : [];
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Hero>
@@ -91,6 +81,7 @@ class TopicPage extends Component {
                       subjectsTitle={t('breadcrumb.subjectsLinkText')}
                       subject={subject}
                       topicPath={topicPath}
+                      currentTopic={topic}
                       toTopic={toTopic}>
                       {/* {t('breadcrumb.label')}*/}
                     </TopicBreadcrumb>

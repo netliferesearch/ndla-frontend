@@ -16,6 +16,7 @@ import defined from 'defined';
 import {
   OneColumn,
   Hero,
+  Icon,
   TopicIntroductionList,
   // ResourceWrapper,
   LayoutItem,
@@ -53,7 +54,7 @@ class SubjectPage extends Component {
   }
 
   render() {
-    const { subjectTopics, subject, t, topic } = this.props;
+    const { subjectTopics, subject, topic } = this.props;
     if (!subject) {
       return null;
     }
@@ -66,14 +67,15 @@ class SubjectPage extends Component {
             <div className="c-hero__content">
               <section>
                 <div className="c-breadcrumb">
-                  {/* {t('breadcrumb.label')}*/}
                   <ol className="c-breadcrumb__list">
-                    <li className="c-breadcrumb__item">
-                      <Link to="/">{t('breadcrumb.subjectsLinkText')}</Link>
+                    <li className="c-breadcrumb__item c-breadcrumb__item--home">
+                      <Link to="/"><Icon.Home className="icon--20" /></Link>
+                    </li>
+                    <li className="c-breadcrumb__item c-breadcrumb__item--current">
+                      <Link to="#">{ subject.name }</Link>
                     </li>
                   </ol>
                 </div>
-                {/* <h1 className="c-hero__title">{subject.name}</h1>*/}
               </section>
             </div>
           </OneColumn>
@@ -81,8 +83,8 @@ class SubjectPage extends Component {
         <OneColumn>
           <article className="c-article">
               <LayoutItem layout="extend">
-                <h1 className="c-resources__title">
-                  {t('subjectPage.tabs.topics')}
+                <h1>
+                  { subject.name }
                 </h1>
                 <TopicIntroductionList
                   toTopic={toTopic(subject.id)}

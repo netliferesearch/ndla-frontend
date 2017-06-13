@@ -16,7 +16,7 @@ import defined from 'defined';
 import {
   OneColumn,
   Hero,
-  Icon,
+  // Icon,
   TopicIntroductionList,
   // ResourceWrapper,
   LayoutItem,
@@ -69,7 +69,7 @@ class SubjectPage extends Component {
                 <div className="c-breadcrumb">
                   <ol className="c-breadcrumb__list">
                     <li className="c-breadcrumb__item c-breadcrumb__item--home">
-                      <Link to="/"><Icon.Home className="icon--20" /></Link>
+                      <Link to="/">m</Link>
                     </li>
                     <li className="c-breadcrumb__item c-breadcrumb__item--current">
                       <Link to="#">{ subject.name }</Link>

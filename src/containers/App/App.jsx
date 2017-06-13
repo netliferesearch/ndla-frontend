@@ -33,7 +33,7 @@ export class App extends React.Component {
     return (
       <PageContainer>
         <Helmet
-          title="NDLA"
+          title="NDLA FOR LIFE"
           meta={[{ name: 'description', content: t('meta.description') }]}
         />
         <Switch>

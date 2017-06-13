@@ -17,7 +17,6 @@ import {
   MediaListItemActions,
   MediaListItemMeta,
 } from './MediaList';
-import Icon from '../Icon';
 import { CopyrightObjectShape } from '../../shapes';
 
 const ImageLicenseInfo = ({ image, locale }) =>

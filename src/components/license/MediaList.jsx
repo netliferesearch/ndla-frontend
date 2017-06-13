@@ -12,7 +12,8 @@ import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
 import { ClickableLicenseByline } from 'ndla-ui';
 // import getLicenseByAbbreviation from '../../../license_lib';
-import getLicenseByAbbreviation from '../../../ndla-licenses';
+// import getLicenseByAbbreviation from '../../../ndla-licenses';
+import getLicenseByAbbreviation from 'ndla-licenses';
 
 const oClasses = new BEMHelper({
   name: 'media',

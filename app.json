@@ -1,0 +1,35 @@
+{
+  "name": "ndla-frontend",
+  "scripts": {
+  },
+  "env": {
+    "NDLA_API_URL": {
+      "required": true
+    },
+    "NDLA_ENVIRONMENT": {
+      "required": true
+    },
+    "NDLA_FRONTENTD_HOST": {
+      "required": true
+    },
+    "NDLA_FRONTENTD_PORT": {
+      "required": true
+    },
+    "NODEMODULESCACHE": {
+      "required": true
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

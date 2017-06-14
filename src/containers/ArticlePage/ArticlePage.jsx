@@ -69,7 +69,7 @@ class ArticlePage extends Component {
     }
     if (article.status === 404) {
       // tmp hack
-      return <h1>404 Fant ikke artikkelen</h1>;
+      return <div><Hero /><article className="u-padding"><h1>404 Fant ikke artikkelen</h1></article></div>;
     }
     const scripts = article.requiredLibraries
       ? article.requiredLibraries.map(lib => ({

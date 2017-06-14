@@ -38,7 +38,7 @@ class Resources extends Component {
         {topicResourcesByType.map(type =>
           <div
             key={type.id}
-            {...resClasses('', [(type.name.replace(/æ/g, ''): '')])}
+            {...resClasses('', [(type.id.replace(/:/g, '-'): '')])}
           >
             <h1 className="c-resources__title">{type.name}</h1>
             <ResourceList

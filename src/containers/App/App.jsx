@@ -10,6 +10,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
+import ReactStickyHeader from 'react-sticky-header';
 import Helmet from 'react-helmet';
 import { PageContainer } from 'ndla-ui';
 
@@ -39,8 +40,15 @@ export class App extends React.Component {
         <Switch>
           <Route
             path={`${match.url}subjects/:subjectId`}
-            render={({ match: routeMatch }) =>
-              <Masthead t={t} params={routeMatch.params} />}
+            render={
+              ({ match: routeMatch }) =>
+              <ReactStickyHeader header={
+                  <div style={{backgroundColor: 'rgba(255,255,255,0.8)'}} className={('Header_root')}>
+                    <Masthead t={t} params={routeMatch.params} />
+                  </div>
+                }
+                />
+            }
           />
           <Route
             path={`${match.url}article/:subjectId/:topicId/:articleId`}

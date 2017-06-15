@@ -25,6 +25,7 @@ import { injectT } from '../../i18n';
 import * as actions from './subjectActions';
 import * as topicActions from '../TopicPage/topicActions';
 import { getSubjectById } from './subjectSelectors';
+import Resources from '../Resources/Resources';
 import {
   getTopicsBySubjectIdWithIntroduction,
   getTopic,
@@ -69,7 +70,7 @@ class SubjectPage extends Component {
                 <div className="c-breadcrumb">
                   <ol className="c-breadcrumb__list">
                     <li className="c-breadcrumb__item c-breadcrumb__item--home">
-                      <Link to="/"><Icon.Home className="icon--20" /></Link>
+                      <Link to="/"><Icon.Home className="c-icon--20" /></Link>
                     </li>
                     <li className="c-breadcrumb__item c-breadcrumb__item--current">
                       <Link to="#">{ subject.name }</Link>
@@ -90,6 +91,7 @@ class SubjectPage extends Component {
                   toTopic={toTopic(subject.id)}
                   topics={topics}
                 />
+              <Resources topicId={topics} />
               </LayoutItem>
           </article>
         </OneColumn>

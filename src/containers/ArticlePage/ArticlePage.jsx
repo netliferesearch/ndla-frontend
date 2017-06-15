@@ -22,6 +22,8 @@ import * as subjectActions from '../SubjectPage/subjectActions';
 import { getArticle } from './articleSelectors';
 import { getLocale } from '../Locale/localeSelectors';
 import { ArticleShape, SubjectShape, TopicShape } from '../../shapes';
+// import TopicResources from './../TopicPage/TopicResources';
+// import Resources from '../Resources/Resources';
 import Article from './components/Article';
 import config from '../../config';
 import { injectT } from '../../i18n';

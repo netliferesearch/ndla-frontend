@@ -13,8 +13,8 @@ import {
   headerWithAccessToken,
 } from '../../util/apiHelpers';
 
-//const converterBaseUrl = 'https://ndla-article-converter.herokuapp.com/article-converter/raw';
-const converterBaseUrl = 'http://localhost:3100/article-converter/raw';
+const converterBaseUrl = 'https://ndla-article-converter.herokuapp.com/article-converter/raw';
+//const converterBaseUrl = 'http://localhost:3100/article-converter/raw';
 const baseUrl = apiResourceUrl('/article-api/v1/articles');
 
 export const fetchArticle = (id, locale, token) =>

@@ -20,6 +20,7 @@ import { injectT } from '../../../i18n';
 import ToggleLicenseBox from './ToggleLicenseBox';
 import ArticleByline from './ArticleByline';
 import LicenseBox from '../../../components/license/LicenseBox';
+import words from '../words.json';
 
 class Article extends Component {
   componentDidMount() {

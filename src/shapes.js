@@ -15,6 +15,7 @@ export const ArticleShape = PropTypes.shape({
     authors: PropTypes.array.isRequired,
   }).isRequired,
   created: PropTypes.string.isRequired,
+  type: PropTypes.string,
   updated: PropTypes.string.isRequired,
 });
 

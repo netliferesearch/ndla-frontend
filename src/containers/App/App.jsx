@@ -53,7 +53,12 @@ export class App extends React.Component {
           <Route
             path={`${match.url}article/:subjectId/:topicId/:articleId`}
             render={({ match: routeMatch }) =>
-              <Masthead t={t} params={routeMatch.params} />}
+            <ReactStickyHeader header={
+                <div style={{backgroundColor: 'rgba(255,255,255,0.8)'}} className={('Header_root')}>
+                  <Masthead t={t} params={routeMatch.params} />
+                </div>}
+              />
+            }
           />
           <Route render={() => <Masthead t={t} params={{}} />} />
         </Switch>

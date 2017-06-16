@@ -91,7 +91,7 @@ class SubjectPage extends Component {
                   toTopic={toTopic(subject.id)}
                   topics={topics}
                 />
-              <Resources topicId={topics} />
+              <Resources topicId="topic:1:179373" />
               </LayoutItem>
           </article>
         </OneColumn>

@@ -15,7 +15,7 @@ import {
 
 const converterBaseUrl =
   process.env.ARTICLE_CONVERTER_URL ||
-  'http://localhost:3100/article-converter/raw';
+  'https://ndla-article-converter.herokuapp.com/article-converter/raw';
 
 const baseUrl = apiResourceUrl('/article-api/v1/articles');
 

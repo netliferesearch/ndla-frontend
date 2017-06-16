@@ -47,11 +47,9 @@ const phrases = {
     associatedTopics: 'Tilhørende emner',
   },
   license: {
-    heading: 'Hvordan gjenbruke innhold fra NDLA',
+    heading: 'Hvordan bruke innhold fra NDLA',
     introduction: `Alt innhold på NDLA har egne opphavsrettigheter. Disse må du ta hensyn
-      til dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no. Opphavsretten
-      bestemmer hvordan du kan bruke innholdet, enten det skal publiseres, deles på internett,
-      eller hvis noen skal tjene penger på det. Under kan du kan du se hvordan du kan bruke innholdet.`,
+      til dersom du skal gjenbruke noe av dette innholdet utenfor ndla.no.`,
     tabs: {
       texts: 'Tekst',
       images: 'Bilder',

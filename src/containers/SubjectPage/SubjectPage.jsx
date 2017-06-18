@@ -30,6 +30,7 @@ import {
   getTopicsBySubjectIdWithIntroduction,
   getTopic,
 } from '../TopicPage/topicSelectors';
+import TopicResources from '../TopicPage/TopicResources';
 import { SubjectShape, TopicShape } from '../../shapes';
 import { toTopicPartial } from '../../routes';
 
@@ -91,7 +92,11 @@ class SubjectPage extends Component {
                   toTopic={toTopic(subject.id)}
                   topics={topics}
                 />
-              <Resources topicId="topic:1:179373" />
+              <TopicResources
+                showResources
+                subjectId={subject.id}
+                topic={toTopic(subject.id)}
+              />
               </LayoutItem>
           </article>
         </OneColumn>

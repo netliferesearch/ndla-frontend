@@ -6,11 +6,10 @@
  *
  */
 
-import fetch from 'isomorphic-fetch';
 import {
   resolveJsonOrRejectWithError,
   apiResourceUrl,
-  headerWithAccessToken,
+  fetchWithAccessToken,
 } from '../../util/apiHelpers';
 
 const converterBaseUrl =
@@ -19,12 +18,12 @@ const converterBaseUrl =
 
 const baseUrl = apiResourceUrl('/article-api/v1/articles');
 
-export const fetchArticle = (id, locale, token) =>
-  fetch(`${converterBaseUrl}/${locale}/${id}`, {
-    headers: headerWithAccessToken(token),
-  }).then(resolveJsonOrRejectWithError);
+export const fetchArticle = (id, locale) =>
+  fetchWithAccessToken(`${converterBaseUrl}/${locale}/${id}`).then(
+    resolveJsonOrRejectWithError,
+  );
 
-export const fetchArticles = (ids, token) =>
-  fetch(`${baseUrl}?ids=${ids.join(',')}`, {
-    headers: headerWithAccessToken(token),
-  }).then(resolveJsonOrRejectWithError);
+export const fetchArticles = ids =>
+  fetchWithAccessToken(`${baseUrl}?ids=${ids.join(',')}`).then(
+    resolveJsonOrRejectWithError,
+  );

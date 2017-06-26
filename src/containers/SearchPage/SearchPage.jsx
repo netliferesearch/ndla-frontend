@@ -17,7 +17,7 @@ import { getLocale } from '../Locale/localeSelectors';
 import SearchForm from './components/SearchForm';
 import SearchResultList from './components/SearchResultList';
 import SelectSearchSortOrder from './components/SelectSearchSortOrder';
-import { toSearch } from '../../routes';
+import { toSearch } from '../../routeHelpers';
 import { createQueryString, parseQueryString } from '../../util/queryHelpers';
 
 class SearchPage extends Component {
@@ -61,17 +61,19 @@ class SearchPage extends Component {
             )}
         />
 
-        <SelectSearchSortOrder
-          sort={query.sort}
-          onSortOrderChange={sort =>
-            history.push(
-              `/search?${createQueryString({
-                query: query.query,
-                sort,
-                page: 1,
-              })}`,
-            )}
-        />
+        <div className="search-filters">
+          <SelectSearchSortOrder
+            sort={query.sort}
+            onSortOrderChange={sort =>
+              history.push(
+                `/search?${createQueryString({
+                  query: query.query,
+                  sort,
+                  page: 1,
+                })}`,
+              )}
+          />
+        </div>
 
         <SearchResultList query={query} locale={locale} results={results} />
 

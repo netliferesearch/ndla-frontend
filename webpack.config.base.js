@@ -7,7 +7,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const entry = {
-  main: ['./src/index.jsx', './style/index.css'],
+  main: ['./src/index.jsx', './style/index.css', './style/ndla-favicon.png'],
   embed: ['./server/embedScripts.js'],
   mathjaxConfig: ['./src/mathjaxConfig.js'],
 };
@@ -73,6 +73,15 @@ module.exports = options => ({
       },
       __CLIENT__: true,
       __SERVER__: false,
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      chunks: ['main'],
+      filename: options.vendorFilename,
+      minChunks(module) {
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      },
     }),
   ]),
 

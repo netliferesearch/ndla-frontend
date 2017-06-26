@@ -9,12 +9,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { withRouter } from 'react-router-dom';
-// import BEMHelper from 'react-bem-helper';
+import withRouter from 'react-router-dom/withRouter';
 import { connect } from 'react-redux';
 import { ResourceList } from 'ndla-ui';
 import { ResourceTypeShape } from '../../shapes';
-import { getResourceTypesByTopicId } from './resourceSelectors';
+import { getResourceTypesByTopicId } from './resource';
 import { resourceToLinkProps as resourceToLinkPropsHelper } from './resourceHelpers';
 
 const resClasses = new BEMHelper({

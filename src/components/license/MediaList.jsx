@@ -10,56 +10,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
 import { uuid } from 'ndla-util';
-import { ClickableLicenseByline } from 'ndla-ui';
-// import getLicenseByAbbreviation from '../../../license_lib';
-// import getLicenseByAbbreviation from '../../../ndla-licenses';
-import getLicenseByAbbreviation from 'ndla-licenses';
-
-const oClasses = new BEMHelper({
-  name: 'media',
-  prefix: 'o-',
-});
 
 const cClasses = new BEMHelper({
   name: 'medialist',
   prefix: 'c-',
 });
-
-export const MediaList = ({ children }) =>
-  <ul {...cClasses()}>
-    {children}
-  </ul>;
-
-export const MediaListItem = ({ children }) =>
-  <li {...oClasses('item', null, cClasses('item').className)}>
-    {children}
-  </li>;
-
-export const MediaListItemImage = ({ children }) =>
-  <div {...oClasses('img', null, cClasses('img').className)}>
-    {children}
-  </div>;
-
-export const MediaListItemBody = ({ children, license, title, locale }) =>
-  <div {...oClasses('body', null, cClasses('body').className)}>
-    {title ? <h3 className="c-medialist__title">{title} </h3> : null}
-    <ClickableLicenseByline
-      license={getLicenseByAbbreviation(license, locale)}
-    />
-    {children}
-  </div>;
-
-MediaListItemBody.propTypes = {
-  children: PropTypes.node.isRequired,
-  license: PropTypes.string.isRequired,
-  locale: PropTypes.string.isRequired,
-  title: PropTypes.string,
-};
-
-export const MediaListItemActions = ({ children }) =>
-  <div {...cClasses('actions')}>
-    {children}
-  </div>;
 
 export const MediaListItemMeta = ({ authors }) =>
   <ul {...cClasses('actions')}>

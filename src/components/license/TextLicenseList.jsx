@@ -10,32 +10,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { uuid } from 'ndla-util';
 import {
+  Icon,
   MediaList,
   MediaListItem,
   MediaListItemImage,
   MediaListItemBody,
   MediaListItemActions,
-  MediaListItemMeta,
-} from './MediaList';
-import Icon from '../Icon';
+} from 'ndla-ui';
+import { injectT } from '../../i18n';
+import { MediaListItemMeta } from './MediaList';
+import CopyTextButton from './CopyTextButton';
 import { CopyrightObjectShape } from '../../shapes';
 
-const TextLicenseInfo = ({ text, locale }) =>
+const TextLicenseInfo = ({ text, locale, t }) =>
   <MediaListItem>
     <MediaListItemImage>
       <Icon.Document className="c-medialist__icon" />
     </MediaListItemImage>
     <MediaListItemBody
       license={text.copyright.license.license}
-      title="Regler for bruk av teksten"
+      title={t('rules')}
       locale={locale}>
       <MediaListItemActions>
-        <h3 className="c-medialist__title">Slik skal du referere til teksten</h3>
+        <h3 className="c-medialist__title">
+          {t('howToReference')}
+        </h3>
         <MediaListItemMeta authors={text.copyright.authors} />
-        <button className="c-button c-button--outline c-licenseToggle__button" type="button">Kopier referanse</button>
-        <button className="c-button c-button--outline c-licenseToggle__button" type="button">Last ned</button>
+        <CopyTextButton
+          authors={text.copyright.authors}
+          copyTitle={t('copyTitle')}
+          hasCopiedTitle={t('hasCopiedTitle')}
+        />
       </MediaListItemActions>
-
     </MediaListItemBody>
   </MediaListItem>;
 
@@ -44,13 +50,13 @@ TextLicenseInfo.propTypes = {
   text: CopyrightObjectShape,
 };
 
-const TextLicenseList = ({ texts, heading, description, locale }) =>
+const TextLicenseList = ({ texts, heading, description, locale, t }) =>
   <div>
     <h2>{heading}</h2>
     <p>{description}</p>
     <MediaList>
       {texts.map(text =>
-        <TextLicenseInfo text={text} key={uuid()} locale={locale} />,
+        <TextLicenseInfo text={text} key={uuid()} locale={locale} t={t} />,
       )}
     </MediaList>
   </div>;
@@ -62,4 +68,4 @@ TextLicenseList.propTypes = {
   texts: PropTypes.arrayOf(CopyrightObjectShape),
 };
 
-export default TextLicenseList;
+export default injectT(TextLicenseList, 'license.texts.');

@@ -7,15 +7,14 @@
  */
 
 import { take, call, put, select } from 'redux-saga/effects';
-import { hasFetched } from './subjectSelectors';
-import * as actions from './subjectActions';
+import { getLocale } from '../Locale/localeSelectors';
+import { hasFetched, actions } from './subjects';
 import * as api from './subjectApi';
-import { getAccessToken } from '../App/sessionSelectors';
 
 export function* fetchSubjects() {
   try {
-    const token = yield select(getAccessToken);
-    const subjects = yield call(api.fetchSubjects, token);
+    const locale = yield select(getLocale);
+    const subjects = yield call(api.fetchSubjects, locale);
     yield put(actions.setSubjects(subjects));
   } catch (error) {
     // TODO: handle error

@@ -6,14 +6,50 @@
  *
  */
 
+import { createAction, handleActions } from 'redux-actions';
 import { createSelector } from 'reselect';
 import defined from 'defined';
-import {
-  introductionI18N,
-  titleI18N,
-  descriptionI18N,
-} from '../../util/i18nFieldFinder';
-import { getLocale } from '../Locale/localeSelectors';
+
+export const setTopicResources = createAction('SET_TOPIC_RESOURCES');
+export const fetchTopicResources = createAction('FETCH_TOPIC_RESOURCES');
+export const setResourceTypes = createAction('SET_RESOURCE_TYPES');
+
+export const actions = {
+  setTopicResources,
+  fetchTopicResources,
+  setResourceTypes,
+};
+
+export const initalState = {
+  all: {},
+  types: [],
+};
+
+export default handleActions(
+  {
+    [actions.setTopicResources]: {
+      next: (state, action) => {
+        const { topicId, resources } = action.payload;
+        return {
+          ...state,
+          all: { ...state.all, [topicId]: resources },
+        };
+      },
+      throw: state => state,
+    },
+    [actions.setResourceTypes]: {
+      next: (state, action) => {
+        const resourceTypes = action.payload;
+        return {
+          ...state,
+          types: resourceTypes,
+        };
+      },
+      throw: state => state,
+    },
+  },
+  initalState,
+);
 
 const getResourcesFromState = state => state.resources;
 
@@ -28,19 +64,7 @@ export const getResourceTypes = createSelector(
 );
 
 export const getResourcesByTopicId = topicId =>
-  createSelector([getResources, getLocale], (all, locale) =>
-    defined(all[topicId], []).map(resource => {
-      const mappedResource = {
-        ...resource,
-        title: titleI18N(resource, locale, true),
-        introduction:
-          introductionI18N(resource, locale, true) ||
-            descriptionI18N(resource, locale, true),
-      };
-      delete mappedResource.description;
-      return mappedResource;
-    }),
-  );
+  createSelector([getResources], all => defined(all[topicId], []));
 
 export const getResourcesByTopicIdGroupedByResourceTypes = topicId =>
   createSelector([getResourcesByTopicId(topicId)], resourcesByTopic =>

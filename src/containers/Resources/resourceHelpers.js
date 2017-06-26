@@ -7,7 +7,7 @@
  */
 
 import config from '../../config';
-import { toArticle } from '../../routes';
+import { toArticle } from '../../routeHelpers';
 
 const LEARNING_PATH_DOMAIN = __SERVER__ || process.env.NODE_ENV === 'unittest'
   ? config.learningPathDomain
@@ -19,6 +19,7 @@ const hasContentUri = resource => (resource && resource.contentUri) || false;
 
 export const isLearningPathResource = resource =>
   hasContentUri(resource) && resource.contentUri.startsWith(URN_LEARTNING_PATH);
+
 export const isArticleResource = resource =>
   hasContentUri(resource) &&
   resource.contentUri.startsWith(URN_ARTICLE) &&

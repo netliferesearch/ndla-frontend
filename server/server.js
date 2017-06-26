@@ -113,6 +113,7 @@ app.use(
         connectSrc: [
           " 'self' ",
           'https://*.ndla.no',
+          'https://*.herokuapp.com',
           'https://logs-01.loggly.com',
           'https://edge.api.brightcove.com',
           'https://secure.brightcove.com',

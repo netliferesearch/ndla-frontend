@@ -33,7 +33,7 @@ class Article extends Component {
     removeAsideClickListener();
   }
 
-  renderToggleLicenseBox(showByline = false) {
+  renderToggleLicenseBox(showByline = false, clear = false) {
     const { article, locale, t } = this.props;
     const licenseType = article.copyright.license.license;
     const authorsList = article.copyright.authors
@@ -45,6 +45,7 @@ class Article extends Component {
       <ToggleLicenseBox
         openTitle={t('article.openLicenseBox')}
         closeTitle={t('article.closeLicenseBox')}
+        clear={ clear }
         licenseBox={
           <LicenseBox article={article} locale={locale} license={license} />
         }
@@ -82,7 +83,7 @@ class Article extends Component {
           {article.footNotes
             ? <ArticleFootNotes footNotes={article.footNotes} />
             : null}
-          {this.renderToggleLicenseBox()}
+          {this.renderToggleLicenseBox(false, true)}
           <a
             className="article-old-ndla-link"
             rel="noopener noreferrer"

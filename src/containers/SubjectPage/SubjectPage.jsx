@@ -10,9 +10,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { OneColumn, Hero, TopicIntroductionList, LayoutItem, TopicResources, Icon } from 'ndla-ui';
+import { OneColumn, Hero, TopicIntroductionList, LayoutItem, Icon } from 'ndla-ui';
 import Link from 'react-router-dom/Link';
 import defined from 'defined';
+import TopicResources from './../TopicPage/TopicResources';
 import { injectT } from '../../i18n';
 import { actions, getSubjectById } from './subjects';
 import {

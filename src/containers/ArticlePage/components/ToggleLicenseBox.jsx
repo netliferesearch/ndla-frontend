@@ -27,18 +27,20 @@ class ToggleLicenseBox extends Component {
   }
 
   render() {
-    const { openTitle, closeTitle, children, licenseBox } = this.props;
+    const { openTitle, closeTitle, children, licenseBox, clear } = this.props;
     const { expanded } = this.state;
 
     return (
       <div
         className={classnames('license c-licensebox', {
           'c-licensebox--expanded': expanded,
+        }, {
+          'c-licensebox--clear': clear && expanded,
         })}
       >
         <Button
           stripped
-          className="license-toggler"
+          className="c-article__license-toggler"
           onClick={this.toogleLicenseBox}
         >
           {expanded ? closeTitle : openTitle}
@@ -55,6 +57,7 @@ ToggleLicenseBox.propTypes = {
   closeTitle: PropTypes.string.isRequired,
   children: PropTypes.node,
   licenseBox: PropTypes.node.isRequired,
+  clear: PropTypes.bool,
 };
 
 export default ToggleLicenseBox;

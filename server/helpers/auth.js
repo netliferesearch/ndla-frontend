@@ -6,9 +6,10 @@
  *
  */
 
-import 'isomorphic-fetch';
 import btoa from 'btoa';
-import config from '../src/config';
+import config from '../../src/config';
+
+const fetch = require('node-fetch');
 
 const NDLA_API_URL = config.ndlaApiUrl;
 

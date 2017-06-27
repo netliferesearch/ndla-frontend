@@ -11,15 +11,13 @@ import { combineReducers } from 'redux';
 import locale from './containers/Locale/localeReducer';
 import messages from './containers/Messages/messagesReducer';
 import articles from './containers/ArticlePage/articlesReducer';
-import subjects from './containers/SubjectPage/subjectReducer';
-import topics from './containers/TopicPage/topicReducer';
+import subjects from './containers/SubjectPage/subjects';
+import topics from './containers/TopicPage/topic';
 import search from './containers/SearchPage/searchReducer';
-import resources from './containers/Resources/resourceReducer';
-import accessToken from './containers/App/sessionReducer';
+import resources from './containers/Resources/resource';
 
 const rootReducers = combineReducers({
   articles,
-  accessToken,
   locale,
   messages,
   resources,

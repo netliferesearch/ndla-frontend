@@ -13,15 +13,15 @@ import * as sagas from '../articleSagas';
 import * as constants from '../articleConstants';
 import * as actions from '../articleActions';
 
-expectSaga.DEFAULT_TIMEOUT = 100;
+expectSaga.DEFAULT_TIMEOUT = 200;
 
 test('articleSagas watchFetchArticle fetch article if not in state', () => {
   nock('http://ndla-api')
-    .get('/article-converter/raw/nb/123')
+    .get('/article-converter/json/nb/123')
     .reply(200, { id: 123, title: 'unit test' });
 
   return expectSaga(sagas.watchFetchArticle)
-    .withState({ articles: {}, locale: 'nb', accessToken: '123456789' })
+    .withState({ articles: {}, locale: 'nb' })
     .put(actions.setArticle({ id: 123, title: 'unit test' }))
     .dispatch({ type: constants.FETCH_ARTICLE, payload: 123 })
     .run({ silenceTimeout: true });
@@ -32,7 +32,6 @@ test('articleSagas watchFetchArticle do not refetch existing article ', () =>
     .withState({
       articles: { 123: { id: 123 } },
       locale: 'nb',
-      accessToken: '123456789',
     })
     .dispatch({ type: constants.FETCH_ARTICLE, payload: 123 })
     .run({ silenceTimeout: true }));

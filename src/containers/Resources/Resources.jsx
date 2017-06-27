@@ -9,12 +9,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import { withRouter } from 'react-router-dom';
-// import BEMHelper from 'react-bem-helper';
+import withRouter from 'react-router-dom/withRouter';
 import { connect } from 'react-redux';
-import { ResourceList } from 'ndla-ui';
+import { ResourceList, FilterList } from 'ndla-ui';
 import { ResourceTypeShape } from '../../shapes';
-import { getResourceTypesByTopicId } from './resourceSelectors';
+import { getResourceTypesByTopicId } from './resource';
 import { resourceToLinkProps as resourceToLinkPropsHelper } from './resourceHelpers';
 
 const resClasses = new BEMHelper({
@@ -23,9 +22,10 @@ const resClasses = new BEMHelper({
 });
 
 class Resources extends Component {
-  componentWillMount() {}
-
-  componentWillReceiveProps() {}
+  constructor(props) {
+    super(props);
+    this.state = { secondary: false };
+  }
 
   render() {
     const { match: { params }, topicResourcesByType } = this.props;
@@ -35,13 +35,23 @@ class Resources extends Component {
 
     return (
       <div>
-        {topicResourcesByType.map(type =>
+        {topicResourcesByType
+          .map(type =>
           <div
             key={type.id}
             {...resClasses('', [(type.id.replace(/:/g, '-'): '')])}
           >
+            <FilterList
+              modifiers="float-right"
+              label=""
+              onClick={() => { this.setState({ secondary: !this.state.secondary }); }}
+              filterContent={[
+              { title: 'Tilleggsstoff', active: false },
+              ]}
+            />
             <h1 className="c-resources__title">{type.name}</h1>
             <ResourceList
+              secondary={this.state.secondary}
               type={type.name}
               resourceToLinkProps={resourceToLinkProps}
               resources={type.resources.map(resource => ({

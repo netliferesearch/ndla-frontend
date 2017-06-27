@@ -10,10 +10,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { OneColumn } from 'ndla-ui';
-import { Link } from 'react-router-dom';
+import Link from 'react-router-dom/Link';
 
 import { injectT } from '../../i18n';
-import { toSearch } from '../../routes';
+import { toSearch } from '../../routeHelpers';
 import { SubjectShape } from '../../shapes';
 import { injectSubjects } from '../SubjectPage/subjectHOCs';
 import { SubjectLinkList } from '../../components';

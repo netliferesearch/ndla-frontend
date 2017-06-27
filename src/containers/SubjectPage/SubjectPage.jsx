@@ -10,29 +10,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-// import { OneColumn, Hero, TopicIntroductionList } from 'ndla-ui';
-import { Link } from 'react-router-dom';
+import { OneColumn, Hero, TopicIntroductionList, LayoutItem, Icon } from 'ndla-ui';
+import Link from 'react-router-dom/Link';
 import defined from 'defined';
-import {
-  OneColumn,
-  Hero,
-  Icon,
-  TopicIntroductionList,
-  // ResourceWrapper,
-  LayoutItem,
-} from 'ndla-ui';
+import TopicResources from './../TopicPage/TopicResources';
 import { injectT } from '../../i18n';
-import * as actions from './subjectActions';
-import * as topicActions from '../TopicPage/topicActions';
-import { getSubjectById } from './subjectSelectors';
-import Resources from '../Resources/Resources';
+import { actions, getSubjectById } from './subjects';
 import {
+  actions as topicActions,
   getTopicsBySubjectIdWithIntroduction,
   getTopic,
-} from '../TopicPage/topicSelectors';
-import TopicResources from '../TopicPage/TopicResources';
+} from '../TopicPage/topic';
 import { SubjectShape, TopicShape } from '../../shapes';
-import { toTopicPartial } from '../../routes';
+import { toTopicPartial } from '../../routeHelpers';
 
 const toTopic = subjectId => toTopicPartial(subjectId);
 

@@ -11,11 +11,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import BEMHelper from 'react-bem-helper';
 import { compose } from 'redux';
-import * as resourceActions from '../Resources/resourceActions';
 import { injectT } from '../../i18n';
 import { TopicShape } from '../../shapes';
 import Resources from '../Resources/Resources';
-import { getResourcesByTopicId } from '../Resources/resourceSelectors';
+import { actions, getResourcesByTopicId } from '../Resources/resource';
 
 class TopicResources extends Component {
   componentWillMount() {
@@ -47,7 +46,7 @@ TopicResources.propTypes = {
 };
 
 const mapDispatchToProps = {
-  fetchTopicResources: resourceActions.fetchTopicResources,
+  fetchTopicResources: actions.fetchTopicResources,
 };
 
 const mapStateToProps = (state, ownProps) => {

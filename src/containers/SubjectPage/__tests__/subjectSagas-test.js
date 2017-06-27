@@ -6,53 +6,27 @@
  *
  */
 
-import { testSaga } from 'redux-saga-test-plan';
-import { hasFetched } from '../subjectSelectors';
+import nock from 'nock';
+import { expectSaga } from 'redux-saga-test-plan';
 import * as sagas from '../subjectSagas';
-import * as api from '../subjectApi';
-import * as actions from '../subjectActions';
-import { getAccessToken } from '../../App/sessionSelectors';
+import { actions } from '../subjects';
 
-test('subjectSagas fetchSubjects', () => {
-  const token = '12345678';
-  const saga = testSaga(sagas.fetchSubjects);
-  saga
-    .next()
-    .select(getAccessToken)
-    .next(token)
-    .call(api.fetchSubjects, token)
-    .next([{ id: '123', name: 'Matematikk' }])
-    .put({
-      type: actions.setSubjects.toString(),
-      payload: [{ id: '123', name: 'Matematikk' }],
-    })
-    .next()
-    .isDone();
-});
+expectSaga.DEFAULT_TIMEOUT = 200;
 
 test('subjectSagas watchFetchSubjects ', () => {
-  const saga = testSaga(sagas.watchFetchSubjects);
-  saga
-    .next()
-    .take(actions.fetchSubjects)
-    .next()
-    .select(hasFetched)
-    .next(false)
-    .call(sagas.fetchSubjects)
-    .finish()
-    .next()
-    .isDone();
+  nock('http://ndla-api')
+    .get('/taxonomy/v1/subjects/?language=en')
+    .reply(200, [{ id: 123, title: 'unit test' }]);
+
+  return expectSaga(sagas.watchFetchSubjects)
+    .withState({ subjects: { hasFetched: false }, locale: 'en' })
+    .put(actions.setSubjects([{ id: 123, title: 'unit test' }]))
+    .dispatch(actions.fetchSubjects())
+    .run({ silenceTimeout: true });
 });
 
-test('subjectSagas watchFetchSubjects when hasFetched is true', () => {
-  const saga = testSaga(sagas.watchFetchSubjects);
-  saga
-    .next()
-    .take(actions.fetchSubjects)
-    .next()
-    .select(hasFetched)
-    .next(true)
-    .finish()
-    .next()
-    .isDone();
-});
+test('subjectSagas watchFetchSubjects do not refetch if already fetched', () =>
+  expectSaga(sagas.watchFetchSubjects)
+    .withState({ subjects: { hasFetched: true }, locale: 'en' })
+    .not.dispatch(actions.fetchSubjects())
+    .run({ silenceTimeout: true }));

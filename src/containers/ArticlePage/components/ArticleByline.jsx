@@ -9,10 +9,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BEMHelper from 'react-bem-helper';
-import Icon from '../../../components/Icon';
+import { Icon } from 'ndla-ui';
 
 const classes = new BEMHelper({
-  name: 'article',
+  name: 'article-byline',
   prefix: 'c-',
 });
 
@@ -38,11 +38,12 @@ LastUpdated.propTypes = {
   date: PropTypes.string,
 };
 
-const ArticleByline = ({ authors, updated }) =>
+const ArticleByline = ({ authors, updated, children }) =>
   <div>
-    <section {...classes('byline')}>
+    <section {...classes('')}>
       {authors && <AuthorsList authors={authors} />}
       <LastUpdated date={updated} />
+      {children}
     </section>
   </div>;
 
